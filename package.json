@@ -9,7 +9,8 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon server.js --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && npm install"
+    "install": "cd client && npm install",
+    "seed": "node scripts/seedDB.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/akuranz/project-3#readme",
   "dependencies": {
+    "antd": "^4.1.0",
     "axios": "^0.19.2",
     "babel": "^6.23.0",
     "bcrypt": "^4.0.1",
