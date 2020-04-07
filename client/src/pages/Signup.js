@@ -71,66 +71,69 @@ const Signup = () => {
 			  }
 			: null;
 
-	return (
-		<div>
-			<h1>Signup</h1>
-			<Form
-				labelCol={{
-					span: 4
-				}}
-				wrapperCol={{
-					span: 14
-				}}
-				layout="horizontal"
-				initialValues={{
-					size: "medium" // {componentSize}
-				}}
-				// onValuesChange={onFormLayoutChange}
-				// size={componentSize}
-			>
-				{/* <Form.Item label="Form Size" name="size">
+	if (state.redirectTo) {
+		return <Redirect to={{ pathname: state.redirectTo }} />;
+	} else {
+		return (
+			<div>
+				<h1>Signup</h1>
+				<Form
+					labelCol={{
+						span: 4
+					}}
+					wrapperCol={{
+						span: 14
+					}}
+					layout="horizontal"
+					initialValues={{
+						size: "medium" // {componentSize}
+					}}
+					// onValuesChange={onFormLayoutChange}
+					// size={componentSize}
+				>
+					{/* <Form.Item label="Form Size" name="size">
           <Radio.Group>
             <Radio.Button value="small">Small</Radio.Button>
             <Radio.Button value="middle">Middle</Radio.Button>
             <Radio.Button value="large">Large</Radio.Button>
           </Radio.Group>
         </Form.Item> */}
-				<Form.Item
-					label="Username"
-					name="username"
-					id="username"
-					type="text"
-					placeholder="Username"
-					value={state.username}
-					onChange={handleChange}
-					rules={[
-						{
-							required: true,
-							message: "Please input a username!"
-						}
-					]}
-				>
-					<Input name="username" />
-				</Form.Item>
+					<Form.Item
+						label="Username"
+						name="username"
+						id="username"
+						type="text"
+						placeholder="Username"
+						value={state.username}
+						onChange={handleChange}
+						rules={[
+							{
+								required: true,
+								message: "Please input a username!"
+							}
+						]}
+					>
+						<Input name="username" />
+					</Form.Item>
 
-				<Form.Item
-					label="Password"
-					name="password"
-					placeholder="password"
-					type="password"
-					value={state.password}
-					onChange={handleChange}
-					rules={[
-						{
-							required: true,
-							message: "Please input your password!"
-						}
-					]}
-				>
-					<Input.Password name="password" />
-				</Form.Item>
-				
-				{/* <Form.Item
+					<Form.Item
+						label="Password"
+						name="password"
+						placeholder="password"
+						type="password"
+						value={state.password}
+						onChange={handleChange}
+						rules={[
+							{
+								required: true,
+								message: "Please input your password!"
+							}
+						]}
+					>
+						<Input.Password name="password" />
+					</Form.Item>
+
+					{/* <Form.Item
 					label="confirmPassword"
 					name="confirmPassword"
 					placeholder="confirmPassword"
@@ -147,7 +150,7 @@ const Signup = () => {
 					<Input.Password name="confirmPassword" />
 				</Form.Item> */}
 
-				{/* <Form.Item label="Select">
+					{/* <Form.Item label="Select">
 					<Select>
 						<Select.Option value="demo">Demo</Select.Option>
 					</Select>
@@ -193,14 +196,15 @@ const Signup = () => {
 				<Form.Item label="Switch">
 					<Switch />
 				</Form.Item> */}
-				<Form.Item {...buttonItemLayout}>
-					<Button type="primary" htmlType="submit" onClick={handleSubmit}>
-						Submit
-					</Button>
-				</Form.Item>
-			</Form>
-		</div>
-	);
+					<Form.Item {...buttonItemLayout}>
+						<Button type="primary" htmlType="submit" onClick={handleSubmit}>
+							Submit
+						</Button>
+					</Form.Item>
+				</Form>
+			</div>
+		);
+	}
 };
 
 export default Signup;
