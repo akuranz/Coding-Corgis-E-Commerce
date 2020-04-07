@@ -1,20 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 // components
 // import Signup from "./components/sign-up";
 // import LoginForm from "./components/login-form";
 // import Navbar from "./components/navbar";
 // import Home from "./components/home";
-import { Layout, Menu } from "antd";
-import {
-	RightOutlined,
-	HomeOutlined,
-	LoginOutlined,
-	AppstoreOutlined,
-	ShoppingCartOutlined,
-	QuestionCircleOutlined
-} from "@ant-design/icons";
+import { Layout } from "antd";
+import SideMenu from "./components/SideMenu";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -74,43 +67,7 @@ function App() {
 						console.log(collapsed, type);
 					}}
 				>
-					<Menu defaultSelectedKeys={["1"]} mode="inline" theme="dark">
-						<Menu.Item>
-							<HomeOutlined />
-							<span>
-								Home <RightOutlined />
-							</span>
-							<Link to="/" />
-						</Menu.Item>
-						<Menu.Item>
-							<LoginOutlined />
-							<span>
-								Login/Signup <RightOutlined />
-							</span>
-							<Link to="/loginSignup" />
-						</Menu.Item>
-						<Menu.Item>
-							<AppstoreOutlined />
-							<span>
-								Browse Services <RightOutlined />
-							</span>
-							<Link to="/browse" />
-						</Menu.Item>
-						<Menu.Item>
-							<ShoppingCartOutlined />
-							<span>
-								My Cart <RightOutlined />
-							</span>
-							<Link to="/cart" />
-						</Menu.Item>
-						<Menu.Item>
-							<QuestionCircleOutlined />
-							<span>
-								About Us <RightOutlined />
-							</span>
-							<Link to="/about" />
-						</Menu.Item>
-					</Menu>
+					<SideMenu />
 				</Sider>
 				<Layout>
 					<Header
