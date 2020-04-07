@@ -1,80 +1,139 @@
-import React from "react";
-import { Form, Input, Button, Checkbox } from 'antd';
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { Form, Input, Button, Checkbox } from "antd";
+import axios from "axios";
 
 const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
+	labelCol: {
+		span: 8
+	},
+	wrapperCol: {
+		span: 16
+	}
 };
 const tailLayout = {
-  wrapperCol: {
-    offset: 8,
-    span: 16,
-  },
+	wrapperCol: {
+		offset: 8,
+		span: 16
+	}
 };
 
-const Login = () => {
+const Login = props => {
+	const [state, setState] = useState({
+		username: "",
+		password: "",
+		redirectTo: null
+	});
+
+	const handleChange = event => {
+		setState({
+			...state,
+			[event.target.name]: event.target.value
+		});
+	};
+
+	const handleSubmit = event => {
+		event.preventDefault();
+		console.log("handleSubmit");
+
+		axios
+			.post("/auth/login", {
+				username: state.username,
+				password: state.password
+			})
+			.then(response => {
+				console.log("login response: ");
+				console.log(response);
+				if (response.status === 200) {
+					// update App.js state
+					props.updateUser({
+						loggedIn: true,
+						username: response.data.username
+					});
+					// update the state to redirect to home
+					setState({
+						...state,
+						redirectTo: "/"
+					});
+				}
+			})
+			.catch(error => {
+				console.log("login error: ");
+				console.log(error);
+			});
+	};
+
 	const onFinish = values => {
-    console.log('Success:', values);
-  };
+		console.log("Success:", values);
+	};
 
-  const onFinishFailed = errorInfo => {
-    console.log('Failed:', errorInfo);
-  };
-	return (
-    <div>
-      <h1>Login</h1>
-    <Form
-      {...layout}
-      // layout="horizontal"
-      name="basic"
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
-      <Form.Item
-        label="Username"
-        name="username"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your username!',
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+	const onFinishFailed = errorInfo => {
+		console.log("Failed:", errorInfo);
+	};
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
+	if (state.redirectTo) {
+		return <Redirect to={{ pathname: state.redirectTo }} />;
+	} else {
+		return (
+			<div>
+				<h1>Login</h1>
+				<Form
+					{...layout}
+					// layout="horizontal"
+					name="basic"
+					initialValues={{
+						remember: true
+					}}
+					onFinish={onFinish}
+					onFinishFailed={onFinishFailed}
+				>
+					<Form.Item
+						label="Username"
+						name="username"
+						id="username"
+						placeholder="Username"
+						value={state.username}
+						onChange={handleChange}
+						rules={[
+							{
+								required: true,
+								message: "Please input your username!"
+							}
+						]}
+					>
+						<Input name="username" />
+					</Form.Item>
 
-      <Form.Item {...tailLayout} name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
-      </Form.Item>
+					<Form.Item
+						label="Password"
+						name="password"
+						placeholder="password"
+						type="password"
+						value={state.password}
+						onChange={handleChange}
+						rules={[
+							{
+								required: true,
+								message: "Please input your password!"
+							}
+						]}
+					>
+						<Input.Password name="password" />
+					</Form.Item>
 
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
-    </div>
-  );
+					<Form.Item {...tailLayout} name="remember" valuePropName="checked">
+						<Checkbox>Remember me</Checkbox>
+					</Form.Item>
+
+					<Form.Item {...tailLayout}>
+						<Button type="primary" htmlType="submit" onClick={handleSubmit}>
+							Submit
+						</Button>
+					</Form.Item>
+				</Form>
+			</div>
+		);
+	}
 };
 
 export default Login;

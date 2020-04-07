@@ -128,7 +128,7 @@ function App() {
 						>
               <Route exact path="/" component={Home} />
               <Route exact path="/loginSignup" component={loginSignup} />
-              <Route exact path="/Login" component={Login} />
+              <Route exact path="/Login" render={() => <Login updateUser={updateUser}/>}/>
               <Route exact path="/Signup" component={Signup} />
               <Route exact path="/browse" component={Browse} />
               <Route exact path="/cart" component={Cart} />
@@ -141,24 +141,6 @@ function App() {
 				</Layout>
 			</Layout>
 		</Router>
-    // <BrowserRouter>
-    //   <Switch>
-    //     <div className="App">
-    //       <Navbar updateUser={updateUser} loggedIn={state.loggedIn} />
-    //       {/* greet user if logged in: */}
-    //       {state.loggedIn && (
-    //         <p>Welcome to the corgi party, {state.username}!</p>
-    //       )}
-    //       {/* Routes to different components */}
-    //       <Route exact path="/" component={Home} />
-    //       <Route
-    //         path="/login"
-    //         render={() => <LoginForm updateUser={updateUser} />}
-    //       />
-    //       <Route path="/signup" render={() => <Signup />} />
-    //     </div>
-    //   </Switch>
-    // </BrowserRouter>
   );
 }
 

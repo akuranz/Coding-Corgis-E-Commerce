@@ -15,3 +15,23 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
+    // <BrowserRouter>
+    //   <Switch>
+    //     <div className="App">
+    //       <Navbar updateUser={updateUser} loggedIn={state.loggedIn} />
+    //       {/* greet user if logged in: */}
+    //       {state.loggedIn && (
+    //         <p>Welcome to the corgi party, {state.username}!</p>
+    //       )}
+    //       {/* Routes to different components */}
+    //       <Route exact path="/" component={Home} />
+    //       <Route
+    //         path="/login"
+    //         render={() => <LoginForm updateUser={updateUser} />}
+    //       />
+    //       <Route path="/signup" render={() => <Signup />} />
+    //     </div>
+    //   </Switch>
+    // </BrowserRouter>
