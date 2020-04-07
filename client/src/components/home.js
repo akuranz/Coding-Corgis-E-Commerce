@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { Button } from 'antd';
+import '../App.css';
 class Home extends Component {
   render() {
     const imageStyle = {
@@ -13,6 +14,7 @@ class Home extends Component {
           alt={"shire"}
           src="https://i.ytimg.com/vi/N1icEHtgb3g/maxresdefault.jpg"
         />
+        <Button type="primary">Button</Button>
       </div>
     );
   }

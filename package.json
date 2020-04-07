@@ -9,7 +9,8 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon server.js --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && npm install"
+    "install": "cd client && npm install",
+    "seed": "node scripts/seedDB.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +24,13 @@
   },
   "homepage": "https://github.com/akuranz/project-3#readme",
   "dependencies": {
+    "antd": "^4.1.0",
     "axios": "^0.19.2",
     "babel": "^6.23.0",
+    "babel-plugin-import": "^1.13.0",
     "bcrypt": "^4.0.1",
     "compression": "^1.7.4",
+    "customize-cra": "^0.9.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "if-env": "^1.0.4",
@@ -34,7 +38,8 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.2",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "react-app-rewired": "^2.1.5"
   },
   "devDependencies": {
     "concurrently": "^3.5.1"
