@@ -21,8 +21,6 @@ const loginSignup = () => {
 					</span>
 				</Button>
 			</Link>
-			{/* <Route exact path="/Login" component={Login} />
-			<Route exact path="/Signup" component={Signup} /> */}
 		</div>
 	);
 };
