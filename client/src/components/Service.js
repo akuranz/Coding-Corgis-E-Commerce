@@ -2,7 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Card, Col, Row } from "antd";
 
-const Service = ({ service }) => {
+const Service = ({ service, handleCart }) => {
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
@@ -19,6 +19,14 @@ const Service = ({ service }) => {
                 <strong>Coder:</strong> {service.coder}
               </li>
             </ul>
+            <button
+              onClick={() => {
+                handleCart(service);
+              }}
+              data-id={service._id}
+            >
+              Add to Cart
+            </button>
           </Card>
         </Col>
       </Row>

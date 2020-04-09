@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import Service from "../components/Service";
 
-function Browse() {
+function Browse({ handleCart }) {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,13 @@ function Browse() {
         <div className="col" size="md-6">
           <h1>What Services do we offer?</h1>
           {services.map((service, i) => {
-            return <Service key={i + "-service"} service={service} />;
+            return (
+              <Service
+                key={i + "-service"}
+                service={service}
+                handleCart={handleCart}
+              />
+            );
           })}
         </div>
       </div>

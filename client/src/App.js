@@ -20,7 +20,7 @@ function App() {
     loggedIn: false,
     username: null,
   });
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([{}]);
 
   useEffect(() => {
     axios.get("/auth").then((response) => {
@@ -43,6 +43,14 @@ function App() {
       }
     });
   }, []);
+
+  const handleCart = (service) => {
+    console.log("we are in handle cart");
+    console.log(service._id);
+    setCart({
+      ...cart,
+    });
+  };
 
   const updateUser = () => {
     setState({
@@ -88,7 +96,11 @@ function App() {
                 render={() => <Login updateUser={updateUser} />}
               />
               <Route exact path="/Signup" component={Signup} />
-              <Route exact path="/browse" component={Browse} />
+              <Route
+                exact
+                path="/browse"
+                render={() => <Browse handleCart={handleCart} />}
+              />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/about" component={About} />
             </div>
