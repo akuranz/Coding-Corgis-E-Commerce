@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Checkbox } from "antd";
 import axios from "axios";
 
@@ -22,7 +22,7 @@ const Login = props => {
 	const [state, setState] = useState({
 		username: "",
 		password: "",
-		redirectTo: null
+		// redirectTo: null
 	});
 
 	const handleChange = event => {
@@ -53,8 +53,9 @@ const Login = props => {
 					// update the state to redirect to home
 					setState({
 						...state,
-						redirectTo: "/"
+						// redirectTo: "/"
 					});
+					window.location.assign("/");
 				}
 			})
 			.catch(error => {
@@ -71,9 +72,9 @@ const Login = props => {
 		console.log("Failed:", errorInfo);
 	};
 
-	if (state.redirectTo) {
-		return <Redirect to={{ pathname: state.redirectTo }} />;
-	} else {
+	// if (state.redirectTo) {
+	// 	return <Redirect to={{ pathname: state.redirectTo }} />;
+	// } else {
 		return (
 			<div>
 				<h1>Login</h1>
@@ -133,7 +134,7 @@ const Login = props => {
 				</Form>
 			</div>
 		);
-	}
+	// }
 };
 
 export default Login;
