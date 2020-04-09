@@ -55,49 +55,53 @@ function App() {
 
   return (
     <Router>
-			<Layout>
-				<Sider
-					style={{ backgroundColor: "#443850" }}
-					breakpoint="lg"
-					collapsedWidth="0"
-					onBreakpoint={broken => {
-						console.log(broken);
-					}}
-					onCollapse={(collapsed, type) => {
-						console.log(collapsed, type);
-					}}
-				>
-					<SideMenu />
-				</Sider>
-				<Layout>
-					<Header
-						className="site-layout-sub-header-background"
-						style={{ padding: 0, backgroundColor: "#EAF0CE" }}
-					>
-						{/* <a id="headerLogo" href="/">
+      <Layout>
+        <Sider
+          style={{ backgroundColor: "#443850" }}
+          breakpoint="lg"
+          collapsedWidth="0"
+          onBreakpoint={(broken) => {
+            console.log(broken);
+          }}
+          onCollapse={(collapsed, type) => {
+            console.log(collapsed, type);
+          }}
+        >
+          <SideMenu />
+        </Sider>
+        <Layout>
+          <Header
+            className="site-layout-sub-header-background"
+            style={{ padding: 0, backgroundColor: "#EAF0CE" }}
+          >
+            {/* <a id="headerLogo" href="/">
 							<img src="../public/coding-corgi-logo-192h.png" alt="logo" />
 						</a> */}
-					</Header>
-					<Content style={{ margin: "24px 16px 0" }}>
-						<div
-							className="site-layout-background"
-							style={{ padding: 24, minHeight: 360 }}
-						>
+          </Header>
+          <Content style={{ margin: "24px 16px 0" }}>
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
               <Route exact path="/" component={Home} />
               <Route exact path="/loginSignup" component={loginSignup} />
-              <Route exact path="/Login" render={() => <Login updateUser={updateUser}/>}/>
+              <Route
+                exact
+                path="/Login"
+                render={() => <Login updateUser={updateUser} />}
+              />
               <Route exact path="/Signup" component={Signup} />
               <Route exact path="/browse" component={Browse} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/about" component={About} />
-						</div>
-					</Content>
-					<Footer style={{ textAlign: "center" }}>
-						Ant Design ©2018 Created by Ant UED
-					</Footer>
-				</Layout>
-			</Layout>
-		</Router>
+            </div>
+          </Content>
+          <Footer style={{ textAlign: "center" }}>
+            Ant Design ©2018 Created by Ant UED
+          </Footer>
+        </Layout>
+      </Layout>
+    </Router>
   );
 }
 
