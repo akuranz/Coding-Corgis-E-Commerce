@@ -18,7 +18,6 @@ require("./config/passport/localStrategy");
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("./client/public")); //is this right?
 app.use(logger("dev"));
 app.use(session({ secret: "keyboard", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
@@ -26,6 +25,8 @@ app.use(passport.session());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+} else {
+  app.use(express.static("./client/public")); //is this right?
 }
 
 // Add routes

@@ -1,4 +1,4 @@
 module.exports = {
   Service: require("./Service"),
-  Customer: require("./User"),
+  User: require("./User"),
 };
