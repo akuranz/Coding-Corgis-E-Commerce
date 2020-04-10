@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import Service from "../components/Service";
+import { Row } from "antd";
 
 function Browse({ handleCart }) {
   const [services, setServices] = useState([]);
@@ -22,6 +23,8 @@ function Browse({ handleCart }) {
       <div className="row">
         <div className="col" size="md-6">
           <h1>What Services do we offer?</h1>
+          <div className="site-card-wrapper">
+              <Row gutter={16}> 
           {services.map((service, i) => {
             return (
               <Service
@@ -29,8 +32,11 @@ function Browse({ handleCart }) {
                 service={service}
                 handleCart={handleCart}
               />
-            );
-          })}
+              );
+            })}
+            </Row> 
+           </div>
+          
         </div>
       </div>
     </>
