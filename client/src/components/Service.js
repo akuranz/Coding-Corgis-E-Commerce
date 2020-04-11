@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Card, Col} from "antd";
+import { Card, Col, Button} from "antd";
 
 const Service = ({ service, selected, handleCart }) => {
   return (
@@ -18,16 +18,16 @@ const Service = ({ service, selected, handleCart }) => {
                 <strong>Coder:</strong> {service.coder}
               </li>
             </ul>
-            <button
+            <Button
               onClick={() => {
                 handleCart(service);
               }}
               data-id={service._id}
             >
               {selected ? "Remove" : "Add to Cart"}
-            </button>
+            </Button>
           </Card>
-        // </Col>
+        </Col>
   )
 };
 
