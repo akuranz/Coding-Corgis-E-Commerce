@@ -18,16 +18,11 @@ const serviceSchema = new Schema({
     type: String,
     required: true,
   },
-  reviews: [
+  review: [
     {
-      review: {
-        type: String,
-        required: false,
-      },
-      reviewer: {
-        type: String,
-        required: false,
-      },
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+      required: false,
     },
   ],
 });
