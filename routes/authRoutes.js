@@ -39,7 +39,9 @@ router.post(
   (req, res) => {
     console.log("logged in", req.user);
     var userInfo = {
+      _id: req.user._id,
       username: req.user.username,
+      services: req.user.services,
     };
     res.send(userInfo);
   }
@@ -51,7 +53,7 @@ router.get("/", (req, res, next) => {
   if (req.user) {
     res.json({ user: req.user });
   } else {
-    res.json({ user: null });
+    res.json({ user: {} });
   }
 });
 

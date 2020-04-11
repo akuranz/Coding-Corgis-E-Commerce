@@ -2,7 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Card, Col} from "antd";
 
-const Service = ({ service, handleCart }) => {
+const Service = ({ service, selected, handleCart }) => {
   return (
     
         <Col span={8}>
@@ -24,11 +24,15 @@ const Service = ({ service, handleCart }) => {
               }}
               data-id={service._id}
             >
-              Add to Cart
+              {selected ? "Remove" : "Add to Cart"}
             </button>
           </Card>
         // </Col>
   )
+};
+
+Service.defaultProps = {
+  selected: false,
 };
 
 export default Service;

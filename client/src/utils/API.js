@@ -6,4 +6,5 @@ export default {
     console.log("we are in getServicess");
     return axios.get("/api/services");
   },
+  checkAuth: () => axios.get("/auth"),
 };
