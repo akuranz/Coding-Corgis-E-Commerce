@@ -11,6 +11,7 @@ import Browse from "./pages/Browse";
 import Cart from "./pages/Cart.jsx";
 import About from "./pages/About";
 import Categories from "./pages/Categories";
+import Checkout from "./pages/Checkout";
 import FooterContent from "./components/FooterContent";
 import "./App.css";
 import { GlobalStateProvider } from "./utils/GlobalContext";
@@ -108,6 +109,7 @@ function App() {
                 <Route path="/cart" component={Cart} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/categories" component={Categories} />
+                <Route exact path="/checkout" component={Checkout} />
               </div>
             </Content>
             <Footer style={{ textAlign: "center", backgroundColor: "#443850" }}>
