@@ -12,13 +12,17 @@ import {
 } from "@ant-design/icons";
 import axios from "axios";
 
+import { useGlobalState } from "../utils/GlobalContext";
+
 const SideMenu = props => {
+	const [state, dispatch] = useGlobalState();
+
 	const handleLogout = () => {
-		axios.post("/auth/logout")
-			.then(res => {
-		  window.location.assign("/");
+		axios.post("/auth/logout").then(res => {
+			window.location.assign("/");
 		});
 	};
+
 	return (
 		<Menu defaultSelectedKeys={["1"]} mode="inline" theme="dark">
 			<Menu.Item>
@@ -28,7 +32,7 @@ const SideMenu = props => {
 				</span>
 				<Link to="/" />
 			</Menu.Item>
-			{!props.isLoggedIn && (
+			{!state.user._id && (
 				<Menu.Item>
 					<LoginOutlined />
 					<span>
@@ -37,7 +41,7 @@ const SideMenu = props => {
 					<Link to="/loginSignup" />
 				</Menu.Item>
 			)}
-			{props.isLoggedIn && (
+			{state.user._id && (
 				<Menu.Item onClick={handleLogout}>
 					<span>
 						<LogoutOutlined /> Logout <RightOutlined />
