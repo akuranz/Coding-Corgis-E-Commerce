@@ -19,35 +19,6 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Service",
     },
-    // {
-    //   language: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   price: {
-    //     type: Number,
-    //     required: true,
-    //   },
-    //   selected: {
-    //     type: Boolean,
-    //   },
-    //   coder: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   reviews: [
-    //     {
-    //       review: {
-    //         type: String,
-    //         required: false,
-    //       },
-    //       reviewer: {
-    //         type: String,
-    //         required: false,
-    //       },
-    //     },
-    //   ],
-    // },
   ],
 });
 
