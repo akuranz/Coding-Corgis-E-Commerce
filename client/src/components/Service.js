@@ -2,7 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Card, Col, Row } from "antd";
 
-const Service = ({ service, handleCart }) => {
+const Service = ({ service, selected, handleCart }) => {
   return (
     <div className="site-card-wrapper">
       <Row gutter={16}>
@@ -25,13 +25,17 @@ const Service = ({ service, handleCart }) => {
               }}
               data-id={service._id}
             >
-              Add to Cart
+              {selected ? "Remove" : "Add to Cart"}
             </button>
           </Card>
         </Col>
       </Row>
     </div>
   );
+};
+
+Service.defaultProps = {
+  selected: false,
 };
 
 export default Service;

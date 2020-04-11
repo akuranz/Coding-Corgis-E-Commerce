@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import Service from "../components/Service";
+import { useGlobalState } from "../utils/GlobalContext";
 
 function Browse({ handleCart }) {
+  const [state, dispatch] = useGlobalState();
   const [services, setServices] = useState([]);
+
+  console.log(state);
 
   useEffect(() => {
     function loadServices() {
@@ -17,6 +21,13 @@ function Browse({ handleCart }) {
     loadServices();
   }, []);
 
+  const selectService = (service) => {
+    dispatch({
+      type: "CART_ADD_SERVICE",
+      payload: service,
+    });
+  };
+
   return (
     <>
       <div className="row">
@@ -27,8 +38,13 @@ function Browse({ handleCart }) {
               <Service
                 key={i + "-service"}
                 service={service}
-                handleCart={handleCart}
+                handleCart={selectService}
               />
+              // <Service
+              //   key={i + "-service"}
+              //   service={service}
+              //   handleCart={handleCart}
+              // />
             );
           })}
         </div>
