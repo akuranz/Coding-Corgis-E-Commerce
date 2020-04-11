@@ -1,11 +1,10 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Card, Col, Row } from "antd";
+import { Card, Col} from "antd";
 
 const Service = ({ service, selected, handleCart }) => {
   return (
-    <div className="site-card-wrapper">
-      <Row gutter={16}>
+    
         <Col span={8}>
           <Card title="Card title" bordered={false}>
             <ul>
@@ -28,10 +27,8 @@ const Service = ({ service, selected, handleCart }) => {
               {selected ? "Remove" : "Add to Cart"}
             </button>
           </Card>
-        </Col>
-      </Row>
-    </div>
-  );
+        // </Col>
+  )
 };
 
 Service.defaultProps = {
