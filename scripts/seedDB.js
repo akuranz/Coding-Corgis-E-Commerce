@@ -10,7 +10,7 @@ mongoose.connect(
 const serviceSeed = [
   {
     language: "Vanilla JavaScript",
-    price: 75,
+    price: 50,
     selected: false,
     coder: "Amber",
     reviews: [
@@ -33,8 +33,44 @@ const serviceSeed = [
     ],
   },
   {
-    language: "CSS",
-    price: 50,
+    language: "React.js",
+    price: 150,
+    selected: false,
+    coder: "Amber",
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
+  },
+  {
+    language: "Node.js",
+    price: 125,
+    selected: false,
+    coder: "Amber",
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
+  },
+  {
+    language: "MySQL",
+    price: 75,
+    selected: false,
+    coder: "Amber",
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
+  },
+  {
+    language: "MongoDB",
+    price: 100,
     selected: false,
     coder: "Amber",
     reviews: [

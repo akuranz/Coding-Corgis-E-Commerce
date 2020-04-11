@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import loginSignup from "./pages/loginSignup";
 import Browse from "./pages/Browse";
-import Cart from "./pages/Cart.jsx";
+import Cart from "./pages/Cart";
 import About from "./pages/About";
 import FooterContent from "./components/FooterContent";
 import "./App.css";
