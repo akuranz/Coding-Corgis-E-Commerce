@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useGlobalState } from "../utils/GlobalContext";
 import Service from "../components/Service";
+import { Button, Row, Col } from "antd";
 
 const Cart = () => {
   const [state, dispatch] = useGlobalState();
@@ -22,7 +23,20 @@ const Cart = () => {
   return (
     <div className="row">
       <div className="col" size="md-6">
-        <h1>Services You've Selected</h1>
+        <Row>
+          <Col span={8}>
+        <h1>Selected Services</h1>
+          </Col>
+          <Col span={8}>
+          <h2>Your Total Amount Due: $00.00</h2>
+          </Col>
+          <Col span={8}>
+        <Button onClick={orderServices}>Continue To Checkout</Button>
+          </Col>
+
+        </Row>
+
+        <Row gutter={16}> 
         {state.cart.map((service, i) => {
           return (
             <Service
@@ -31,15 +45,10 @@ const Cart = () => {
               selected={true}
               handleCart={removeService}
             />
-            // <Service
-            //   key={i + "-service"}
-            //   service={service}
-            //   handleCart={handleCart}
-            // />
+           
           );
         })}
-
-        <button onClick={orderServices}>Order!</button>
+        </Row>
       </div>
     </div>
   );
