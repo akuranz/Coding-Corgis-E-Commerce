@@ -8,6 +8,21 @@ import {
 } from "antd";
 import axios from "axios";
 
+const layout = {
+  labelCol: {
+    span: 8,
+  },
+  wrapperCol: {
+    span: 16,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    offset: 8,
+    span: 16,
+  },
+};
+
 const Signup = () => {
   // const [componentSize, setComponentSize] = useState('small');
 
@@ -61,16 +76,6 @@ const Signup = () => {
       });
   };
 
-  const buttonItemLayout =
-    formLayout === "horizontal"
-      ? {
-          wrapperCol: {
-            span: 14,
-            offset: 4,
-          },
-        }
-      : null;
-
   if (state.redirectTo) {
     return <Redirect to={{ pathname: state.redirectTo }} />;
   } else {
@@ -84,7 +89,7 @@ const Signup = () => {
           wrapperCol={{
             span: 14,
           }}
-          layout="horizontal"
+          {...layout}
           initialValues={{
             size: "medium", // {componentSize}
           }}
@@ -196,7 +201,7 @@ const Signup = () => {
 				<Form.Item label="Switch">
 					<Switch />
 				</Form.Item> */}
-          <Form.Item {...buttonItemLayout}>
+          <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit" onClick={handleSubmit}>
               Submit
             </Button>
