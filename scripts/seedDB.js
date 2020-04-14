@@ -90,6 +90,10 @@ const reviewSeed = [
     review: "cool",
     reviewer: "me",
   },
+  {
+    review: "even cooler",
+    reviewer: "me",
+  },
 ];
 
 const seedDB = async () => {
@@ -100,16 +104,20 @@ const seedDB = async () => {
     //connect reviews to services
     const insertedReviews = await db.Review.collection.insertMany(reviewSeed);
     const reviewIds = Object.values(insertedReviews.insertedIds);
+
     const insertedServices = await db.Service.collection.insertMany(
       serviceSeed
     );
     const serviceIds = Object.values(insertedServices.insertedIds);
     // new variable, loop over newService, filter by id of user
     // const newServiceById = newService.map((service) => service._id);
+
     const newUser = await db.User.create(userSeed);
+
     await db.User.findByIdAndUpdate(newUser._id, {
       $push: { services: { $each: serviceIds } },
     });
+
     await db.Service.update(
       {},
       {
@@ -119,6 +127,7 @@ const seedDB = async () => {
         multi: true,
       }
     );
+
     const __Users = await db.User.findById(newUser._id).populate({
       path: "services",
       populate: {
@@ -126,10 +135,12 @@ const seedDB = async () => {
       },
     });
     console.log(__Users.services[0]);
+
     // console.log("newService", newService);
     // console.log("newServiceByID", newServiceById);
     // const demo2 = await db.User.findById(newServicebyId).populate("review");
     // console.log("demo2", demo2);
+
     // //connect services to user
     // const inserted = await db.Service.collection.insertMany(serviceSeed);
     // const serviceIds = Object.values(inserted.insertedIds);
@@ -137,6 +148,7 @@ const seedDB = async () => {
     // await db.User.findByIdAndUpdate(newUser._id, {
     //   $push: { services: { $each: serviceIds } },
     // });
+
     // const demo = await db.User.findById(newUser._id).populate("services");
     // console.log("demo", demo);
   } catch (error) {

@@ -10,10 +10,6 @@ const serviceSchema = new Schema({
     type: Number,
     required: true,
   },
-  selected: {
-    type: Boolean,
-    default: false,
-  },
   coder: {
     type: String,
     required: true,

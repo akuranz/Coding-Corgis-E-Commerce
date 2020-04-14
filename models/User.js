@@ -20,6 +20,18 @@ const userSchema = new Schema({
       ref: "Service",
     },
   ],
+  billingAddress: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Address",
+    },
+  ],
+  shippingAddress: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Address",
+    },
+  ],
 });
 
 userSchema.methods = {
