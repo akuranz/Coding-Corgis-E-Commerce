@@ -1,14 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
 	return (
-		<a id="headerLogo" href="/">
+		<Link to="/">
 			<img
 				src={require("../images/coding-corgi-logo-192h.png")}
 				alt="logo"
 				style={{ margin: 25 }}
 			/>
-		</a>
+		</Link>
 	);
 };
 
