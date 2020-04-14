@@ -5,7 +5,9 @@ import { Button, Row, Col } from "antd";
 
 const Cart = () => {
   const [state, dispatch] = useGlobalState();
-  console.log(state);
+  console.log("This is the state inside cart.js", state);
+
+  // const cartTotal = 
 
   const removeService = (service) => {
     console.log("REMOVE", service);
@@ -20,6 +22,18 @@ const Cart = () => {
     console.log(serviceIDs);
   };
 
+  
+
+    // get sum of msgCount prop across all objects in array
+    const priceTotal = state.cart.reduce(function(prev, cur) {
+      return prev + cur.price;
+    }, 0);
+    console.log('Total Price:', priceTotal); // Total Messages: 461
+    
+
+  
+ 
+  // const priceTwo
   return (
     <div className="row">
       <div className="col" size="md-6">
@@ -28,7 +42,7 @@ const Cart = () => {
         <h1>Selected Services</h1>
           </Col>
           <Col span={8}>
-          <h2>Your Total Amount Due: $00.00</h2>
+          <h2>Your Total Amount Due: {priceTotal}</h2>
           </Col>
           <Col span={8}>
         <Button onClick={orderServices}>Continue To Checkout</Button>
