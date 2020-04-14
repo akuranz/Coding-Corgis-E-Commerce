@@ -6,7 +6,7 @@ import { RightOutlined } from "@ant-design/icons";
 const loginSignup = () => {
 	return (
 		<div>
-			<h1>loginSignup</h1>
+			<h3>Would you like to Login or Signup?</h3>
 			<Link to="/Login">
 				<Button>
 					<span>
