@@ -6,18 +6,18 @@ import { RightOutlined } from "@ant-design/icons";
 const loginSignup = () => {
 	return (
 		<div>
-			<h3>Would you like to Login or Signup?</h3>
+			<h2>Would you like to Login or Signup?</h2>
 			<Link to="/Login">
-				<Button>
+				<Button type="primary" shape="round" size="large">
 					<span>
-						Login <RightOutlined />
+					LOGIN <RightOutlined />
 					</span>
 				</Button>
 			</Link>
 			<Link to="/Signup">
-				<Button style={{ marginLeft: 20 }}>
+				<Button type="primary" style={{ marginLeft: 20 }}  shape="round" size="large">
 					<span>
-						Signup <RightOutlined />
+					SIGNUP <RightOutlined />
 					</span>
 				</Button>
 			</Link>
