@@ -16,7 +16,7 @@ const AllLayout = () => {
 			<Layout>
 				<PageHeader />
 				<PageContent />
-				<Footer style={{ textAlign: "center", backgroundColor: "#443850" }}>
+				<Footer style={{ textAlign: "center", backgroundColor: "#FFFFFF" }}>
 					<FooterContent />
 				</Footer>
 			</Layout>

@@ -6,7 +6,7 @@ const HomeCarousel = () => {
 		<Carousel
 			autoplay
 			style={{
-				backgroundColor: "#443850",
+				// backgroundColor: "#443850",
 				height: 260,
 				width: 775,
 				display: "flex"
@@ -14,25 +14,25 @@ const HomeCarousel = () => {
 		>
 			<div style={{ color: "#EAF0CE" }}>
 				<img
-					src={require("../images/301-kim-Eydo2lQNfgU-unsplash.jpg")}
+					src={require("../images/chris-ried-ieic5Tq8YMk-unsplash.jpg")}
 					style={{ width: 775 }}
 				/>
 			</div>
 			<div style={{ color: "#EAF0CE" }}>
 				<img
-					src={require("../images/ruby-doan-iTkMgbiZ504-unsplash.jpg")}
+					src={require("../images/dhaval-parmar-dnPniNPUe4o-unsplash.jpg")}
 					style={{ width: 775 }}
 				/>
 			</div>
 			<div style={{ color: "#EAF0CE" }}>
 				<img
-					src={require("../images/bundo-kim-W6KdPX84whY-unsplash.jpg")}
+					src={require("../images/ilya-pavlov-OqtafYT5kTw-unsplash.jpg")}
 					style={{ width: 775 }}
 				/>
 			</div>
 			<div style={{ color: "#EAF0CE" }}>
 				<img
-					src={require("../images/helen-cheng-ty3FAU-hLUM-unsplash.jpg")}
+					src={require("../images/luca-bravo-XJXWbfSo2f0-unsplash.jpg")}
 					style={{ width: 775 }}
 				/>
 			</div>

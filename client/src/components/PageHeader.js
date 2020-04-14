@@ -10,8 +10,8 @@ const PageHeader = () => {
 			className="site-layout-sub-header-background"
 			style={{
 				padding: 0,
-				backgroundColor: "#EAF0CE",
-				height: 250,
+				backgroundColor: "#FFFFFF",
+				height: 230,
 				justifyContent: "center",
 				display: "flex"
 			}}

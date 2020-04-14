@@ -3,13 +3,14 @@ import {
 	TeamOutlined,
 	SolutionOutlined,
 	EnvironmentOutlined,
-	ContactsOutlined
+	ContactsOutlined,
+	QuestionCircleOutlined
 } from "@ant-design/icons";
 
 const About = () => {
 	return (
 		<>
-			<h1>About Us</h1>
+			<h1><QuestionCircleOutlined /> About Us</h1>
 			<div className="container" style={{ width: 400, textAlign: "center" }}>
 				<h3>
 					<TeamOutlined /> Who

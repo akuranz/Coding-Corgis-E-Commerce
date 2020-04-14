@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Row } from "antd";
+import { AppstoreOutlined } from "@ant-design/icons";
 import API from "../utils/API";
 import Service from "../components/Service";
 // import { SearchOutlined } from "@ant-design/icons";
 
 import { useGlobalState } from "../utils/GlobalContext";
+import { toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure();
 
 // let checkFiltered = false;
 
@@ -32,45 +38,12 @@ const Browse = () => {
 	// };
 	console.log("state", state);
 
-	// console.log("filtered", filtered);
-
-	// let servicesArray = [];
-	// console.log("servicesArray", servicesArray);
-
-	// const allCheckBoxes = document.querySelectorAll("input[type=checkbox]");
-	// let checked = {};
-
-	// Array.prototype.forEach.call(allCheckBoxes, el => {
-	// 	el.addEventListener("change", toggleCheckbox);
-	// });
-
-	// function toggleCheckbox(e) {
-	// 	getChecked(e.target.name);
-	// 	// setVisibility();
-	// }
-
-	// const getChecked = name => {
-  //   // useRef? document.query is not working
-	// 	checked[name] = Array.from(
-	// 		document.querySelectorAll("input[name=" + name + "]:checked").map(el => {
-	// 			return el.value;
-	// 		})
-	// 	);
-  // };
-  
-  // getChecked("React.js");
-	// getChecked("Vanilla JavaScript");
-	// getChecked("MongoDB");
-	// getChecked("MySQL");
-	// getChecked("Node.js");
-	// getChecked("HTML");
-
 	useEffect(() => {
 		function loadServices() {
 			API.getServices()
 				.then(res => {
 					console.log("res", res);
-					// setServices(res.data);
+					setServices(res.data);
 					// for (let i = 0; i < services.length; i++) {
 					// 	servicesArray.push(services[i].language);
 					// }
@@ -81,6 +54,7 @@ const Browse = () => {
 	}, []);
 
 	const selectService = service => {
+		toast("Added to Cart", { type: "success", autoClose: 2000 });
 		dispatch({
 			type: "CART_ADD_SERVICE",
 			payload: service
@@ -93,7 +67,9 @@ const Browse = () => {
 		<>
 			<div className="row">
 				<div className="col" size="md-6">
-					<h1>What Services do we offer?</h1>
+					<h1>
+						<AppstoreOutlined /> Our Services
+					</h1>
 					{/* <label>
 						<input name="React.js" type="checkbox" value="React.js" />
 						React.js

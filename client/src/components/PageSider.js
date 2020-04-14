@@ -8,7 +8,7 @@ const { Sider } = Layout;
 const PageSider = () => {
 	return (
 		<Sider
-			style={{ backgroundColor: "#443850" }}
+			// style={{ backgroundColor: "#443850" }}
 			breakpoint="lg"
 			collapsedWidth="0"
 			onBreakpoint={broken => {
