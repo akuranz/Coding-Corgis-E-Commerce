@@ -11,72 +11,72 @@ const serviceSeed = [
     price: 75,
     selected: false,
     coder: "Amber",
-    // reviews: [
-    //   {
-    //     review: "cool",
-    //     reviewer: "Abby",
-    //   },
-    // ],
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
   },
   {
     language: "HTML",
     price: 25,
     selected: false,
     coder: "Amber",
-    // reviews: [
-    //   {
-    //     review: "cool",
-    //     reviewer: "Abby",
-    //   },
-    // ],
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
   },
   {
     language: "React.js",
     price: 150,
     selected: false,
     coder: "Amber",
-    // reviews: [
-    //   {
-    //     review: "cool",
-    //     reviewer: "Abby",
-    //   },
-    // ],
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
   },
   {
     language: "Node.js",
     price: 125,
     selected: false,
     coder: "Amber",
-    // reviews: [
-    //   {
-    //     review: "cool",
-    //     reviewer: "Abby",
-    //   },
-    // ],
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
   },
   {
     language: "MySQL",
     price: 75,
     selected: false,
     coder: "Amber",
-    // reviews: [
-    //   {
-    //     review: "cool",
-    //     reviewer: "Abby",
-    //   },
-    // ],
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
   },
   {
     language: "MongoDB",
     price: 100,
     selected: false,
     coder: "Amber",
-    // reviews: [
-    //   {
-    //     review: "cool",
-    //     reviewer: "Abby",
-    //   },
-    // ],
+    reviews: [
+      {
+        review: "cool",
+        reviewer: "Abby",
+      },
+    ],
   },
 ];
 
