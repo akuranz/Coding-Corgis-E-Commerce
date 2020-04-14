@@ -94,7 +94,7 @@ const Browse = () => {
 			<div className="row">
 				<div className="col" size="md-6">
 					<h1>What Services do we offer?</h1>
-					<label>
+					{/* <label>
 						<input name="React.js" type="checkbox" value="React.js" />
 						React.js
 					</label>
@@ -121,7 +121,7 @@ const Browse = () => {
 					<label>
 						<input name="Node.js" type="checkbox" value="Node.js" />
 						Node.js
-					</label>
+					</label> */}
 					<div className="site-card-wrapper">
 						<Row gutter={16}>
 							{services.map((service, i) => {
