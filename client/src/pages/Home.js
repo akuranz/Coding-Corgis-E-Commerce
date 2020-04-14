@@ -13,15 +13,17 @@ const HomePage = () => {
 	return (
 		<div>
 			<h1>Home</h1>
-			<HomeCarousel />
+			<div style={{ justifyContent: "center", display: "flex" }}>
+				<HomeCarousel />
+			</div>
 			<div className="container" style={{ marginTop: 25 }}>
 				<h4>
 					Top Categories
-          <Link to="/categories">
-					<Button size="small" shape="round" style={{ marginLeft: 10 }}>
-						All Categories <RightOutlined />
-					</Button>
-          </Link>
+					<Link to="/categories">
+						<Button size="small" shape="round" style={{ marginLeft: 10 }}>
+							All Categories <RightOutlined />
+						</Button>
+					</Link>
 				</h4>
 				<Row>
 					<Col span={11}>
