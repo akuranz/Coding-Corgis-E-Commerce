@@ -13,7 +13,7 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
-        review: "cool",
+        review: 2,
         reviewer: "Abby",
       },
     ],
@@ -25,7 +25,7 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
-        review: "cool",
+        review: 5,
         reviewer: "Abby",
       },
     ],
@@ -37,7 +37,7 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
-        review: "cool",
+        review: 2,
         reviewer: "Abby",
       },
     ],
@@ -49,7 +49,7 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
-        review: "cool",
+        review: 3,
         reviewer: "Abby",
       },
     ],
@@ -61,7 +61,7 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
-        review: "cool",
+        review: 2,
         reviewer: "Abby",
       },
     ],
@@ -73,7 +73,7 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
-        review: "cool",
+        review: 4,
         reviewer: "Abby",
       },
     ],
@@ -87,7 +87,7 @@ const userSeed = {
 
 const reviewSeed = [
   {
-    review: "cool",
+    review: 6,
     reviewer: "me",
   },
   {
