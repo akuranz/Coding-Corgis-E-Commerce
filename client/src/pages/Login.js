@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { Form, Input, Button, Checkbox } from "antd";
-import { useGlobalState } from "../utils/GlobalContext";
+import { useGlobalState, GlobalState } from "../utils/GlobalContext";
 import axios from "axios";
 
 const layout = {
@@ -83,7 +83,7 @@ const Login = (props) => {
   // } else {
   return (
     <div>
-      {Object.keys(global.user).length && <Redirect to="/" />}
+      {global.user._id && <Redirect to="/" />}
       <h1>Login</h1>
       <Form
         {...layout}

@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const servicesController = require("../../controllers/checkoutController");
+const checkoutController = require("../../controllers/checkoutController");
 
-router.route("/checkout/").post(servicesController.create);
+router.route("/").post(checkoutController.create);
 // .get(serviceController.findByIdAndUpdate);
 
 // router.route("/checkout/:id").get(servicesController.findByIdAndUpdate);

@@ -16,6 +16,7 @@ import FooterContent from "./components/FooterContent";
 import "./App.css";
 import { GlobalStateProvider } from "./utils/GlobalContext";
 import User from "./pages/User";
+import AddAddress from "./pages/AddAddress";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -110,6 +111,7 @@ function App() {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/categories" component={Categories} />
                 <Route exact path="/checkout" component={Checkout} />
+                <Route exact path="/AddAddress" component={AddAddress} />
               </div>
             </Content>
             <Footer style={{ textAlign: "center", backgroundColor: "#443850" }}>
