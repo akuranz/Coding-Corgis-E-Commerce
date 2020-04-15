@@ -4,6 +4,9 @@ import { Card, Col, Button, Rate } from "antd";
 
 const Service = ({ service, selected, handleCart }) => {
 	console.log("service components", service);
+	console.log("rate info!!!", service.reviews);
+
+	const revNum = service.reviews[0].review
 	return (
 		<Col span={8}>
 			<Card bordered={false} style={{ marginBottom: 15 }}>
@@ -17,11 +20,9 @@ const Service = ({ service, selected, handleCart }) => {
 					<li>
 						<strong>Coder:</strong> {service.coder}
 					</li>
-					<li>
-						<strong>Review:</strong> {service.review[0].review}
-					</li>
+					
+					<Rate defaultValue={revNum} />
 
-					<Rate />
 				</ul>
 				{selected ? (
 					<Button
