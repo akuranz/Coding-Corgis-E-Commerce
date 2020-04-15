@@ -11,6 +11,10 @@ const reviewSchema = new Schema({
     type: String,
     required: false,
   },
+  text: {
+    type: String,
+    required: false,
+  },
 });
 
 const Review = mongoose.model("Review", reviewSchema);
