@@ -12,6 +12,7 @@ import Cart from "../pages/Cart.jsx";
 import About from "../pages/About";
 import Categories from "../pages/Categories";
 import Checkout from "../pages/Checkout";
+import AddAddress from "../pages/AddAddress";
 
 const { Content } = Layout;
 
@@ -31,6 +32,7 @@ const PageContent = () => {
 				<Route exact path="/about" component={About} />
 				<Route exact path="/categories" component={Categories} />
 				<Route exact path="/checkout" component={Checkout} />
+				<Route exact path="/AddAddress" component={AddAddress} />
 			</div>
 		</Content>
 	);
