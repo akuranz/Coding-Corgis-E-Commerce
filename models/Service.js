@@ -18,7 +18,6 @@ const serviceSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Review",
-      required: false,
     },
   ],
 });

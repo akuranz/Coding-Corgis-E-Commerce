@@ -39,9 +39,11 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
+
         review: 2,
         reviewer: "Abby",
         text: "I love web developers!",
+
       },
     ],
   },
@@ -52,9 +54,11 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
+
         review: 3,
         reviewer: "Abby",
         text: "Ok I guess...",
+
       },
     ],
   },
@@ -65,9 +69,11 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
+
         review: 2,
         reviewer: "Abby",
         text: "What a rip off!",
+
       },
     ],
   },
@@ -78,9 +84,11 @@ const serviceSeed = [
     coder: "Amber",
     reviews: [
       {
+
         review: 4,
         reviewer: "Abby",
         text: "Pure Genius",
+
       },
     ],
   },
@@ -97,7 +105,7 @@ const reviewSeed = [
     reviewer: "me",
   },
   {
-    review: "even cooler",
+    review: "cool",
     reviewer: "me",
   },
 ];

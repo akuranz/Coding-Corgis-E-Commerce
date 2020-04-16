@@ -6,31 +6,31 @@ import { Button, Row, Col } from "antd";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useGlobalState } from "../utils/GlobalContext";
 
 import "react-toastify/dist/ReactToastify.css";
 
 toast.configure();
 
 const CheckoutForm = () => {
-	const [state, dispatch] = useGlobalState();
-	console.log("This is the state inside cart.js", state);
-	const [service] = useState({
-		language: "",
-		price: null,
-		coder: ""
-	});
+  const [global, dispatch] = useGlobalState();
+  // const [service] = useState({
+  //   language: "",
+  //   price: null,
+  //   coder: "",
+  // });
 
-	async function handleToken(token, addresses) {
-		console.log("token", token);
-		const response = await axios.post("/api/checkout", { token, service });
-		const { status } = response.data;
-		console.log("Response:", response.data);
-		if (status === "success") {
-			toast("Success! Check email for details", { type: "success" });
-		} else {
-			toast("Something went wrong", { type: "error" });
-		}
-	}
+  // const handleToken = async (token, addresses) => {
+  //   console.log("token", token);
+  //   const response = await axios.post("/api/checkout", { token, service });
+  //   const { status } = response.data;
+  //   console.log("Response:", response.data);
+  //   if (status === "success") {
+  //     toast("Success! Check email for details", { type: "success" });
+  //   } else {
+  //     toast("Something went wrong", { type: "error" });
+  //   }
+  // };
 
 	const removeService = service => {
 		toast("Removed from Cart", { type: "error", autoClose: 2000 });

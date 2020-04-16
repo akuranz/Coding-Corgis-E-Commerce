@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import { Link } from "react-router-dom";
 import { useGlobalState } from "../utils/GlobalContext";
 import Service from "../components/Service";
@@ -13,8 +14,6 @@ toast.configure();
 const Cart = () => {
 	const [state, dispatch] = useGlobalState();
 	console.log("This is the state inside cart.js", state);
-
-	// const cartTotal =
 
 	const removeService = service => {
 		toast("Removed from Cart", { type: "error", autoClose: 2000 });
@@ -86,6 +85,7 @@ const Cart = () => {
 			</Row>
 		</div>
 	);
+
 };
 
 export default Cart;

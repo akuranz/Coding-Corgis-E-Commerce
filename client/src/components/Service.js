@@ -1,6 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Card, Col, Button, Rate, Drawer } from "antd";
+
+import { Card, Col, Button, Rate } from "antd";
 
 const Service = ({ service, selected, handleCart }) => {
 	console.log("service components", service);
@@ -59,6 +60,7 @@ const Service = ({ service, selected, handleCart }) => {
 			</Card>
 		</Col>
 	);
+
 };
 
 Service.defaultProps = {
