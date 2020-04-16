@@ -4,10 +4,14 @@ mongoose.promise = Promise;
 
 const reviewSchema = new Schema({
   review: {
-    type: String,
+    type: Number,
     required: false,
   },
   reviewer: {
+    type: String,
+    required: false,
+  },
+  text: {
     type: String,
     required: false,
   },
