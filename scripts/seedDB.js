@@ -15,6 +15,7 @@ const serviceSeed = [
       {
         review: 2,
         reviewer: "Abby",
+        text: "Fantastic Service",
       },
     ],
   },
@@ -27,6 +28,7 @@ const serviceSeed = [
       {
         review: 5,
         reviewer: "Abby",
+        text: "This service fit my needs",
       },
     ],
   },
@@ -39,6 +41,7 @@ const serviceSeed = [
       {
         review: 2,
         reviewer: "Abby",
+        text: "I love web developers!",
       },
     ],
   },
@@ -51,6 +54,7 @@ const serviceSeed = [
       {
         review: 3,
         reviewer: "Abby",
+        text: "Ok I guess...",
       },
     ],
   },
@@ -63,6 +67,7 @@ const serviceSeed = [
       {
         review: 2,
         reviewer: "Abby",
+        text: "What a rip off!",
       },
     ],
   },
@@ -75,6 +80,7 @@ const serviceSeed = [
       {
         review: 4,
         reviewer: "Abby",
+        text: "Pure Genius",
       },
     ],
   },

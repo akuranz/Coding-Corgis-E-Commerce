@@ -1,15 +1,17 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Card, Col, Button, Rate } from "antd";
+import { Card, Col, Button, Rate, Drawer } from "antd";
 
 const Service = ({ service, selected, handleCart }) => {
 	console.log("service components", service);
 	console.log("rate info!!!", service.reviews);
-
+	
+	
 	const revNum = service.reviews[0].review
 	return (
 		<Col span={8}>
 			<Card bordered={false} style={{ marginBottom: 15 }}>
+				
 				<ul>
 					<li>
 						<strong>Language:</strong> {service.language}
@@ -20,10 +22,17 @@ const Service = ({ service, selected, handleCart }) => {
 					<li>
 						<strong>Coder:</strong> {service.coder}
 					</li>
+					<li>
+					<strong>Top Review By { service.reviews[0].reviewer } :</strong> {service.reviews[0].text}
+					</li>
+					
 					
 					<Rate defaultValue={revNum} />
 
 				</ul>
+
+       
+     
 				{selected ? (
 					<Button
             danger
@@ -46,6 +55,7 @@ const Service = ({ service, selected, handleCart }) => {
 						Add to Cart
 					</Button>
 				)}
+				
 			</Card>
 		</Col>
 	);
