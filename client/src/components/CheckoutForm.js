@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useGlobalState } from "../utils/GlobalContext";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+import API from "../utils/API";
 import Service from "../components/Service";
 import { Button, Row, Col, Select } from "antd";
 // import { DownOutlined } from "@ant-design/icons";
@@ -17,96 +18,143 @@ toast.configure();
 const { Option } = Select;
 
 const CheckoutForm = () => {
-	const [global, dispatch] = useGlobalState();
-	const [state, setState] = useState({
-		billingAddress: "",
-		shippingAddress: ""
-	});
+  const [global, dispatch] = useGlobalState();
+  const [state, setState] = useState({
+    ...global.user,
+    billingAddress: global.user.billingAddress[0] || undefined,
+  });
+  //   const [service] = useState({
+  //     language: "",
+  //     price: null,
+  //     coder: "",
+  //   });
 
-	// const handleInput = ({ target }) => {
-	//   setState({
-	//     ...state,
-	//     [target.name]: target.value,
-	//   });
-	// };
-	const removeService = service => {
-		toast("Removed from Cart", { type: "error", autoClose: 2000 });
-		console.log("REMOVE", service);
-		dispatch({
-			type: "CART_REMOVE_SERVICE_BY_ID",
-			payload: service._id
-		});
-	};
+  // const handleInput = ({ target }) => {
+  //   setState({
+  //     ...state,
+  //     [target.name]: target.value,
+  //   });
+  // };
+  console.log(global);
 
-	const submitPurchase = async () => {
-		console.log({
-			user_id: global.user._id,
-			services: global.serviceIds()
-		});
-		axios
-			.post("/api/checkout", {
-				user_id: global.user._id,
-				service_ids: global.serviceIds(),
-				...state
-			})
-			.then(response => console.log(response))
-			.catch(err => console.warn(err));
-	};
+  const removeService = (service) => {
+    toast("Removed from Cart", { type: "error", autoClose: 2000 });
+    console.log("REMOVE", service);
+    dispatch({
+      type: "CART_REMOVE_SERVICE_BY_ID",
+      payload: service._id,
+    });
+  };
 
-	function handleChange(value) {
-		console.log(`selected ${value}`);
-	}
+  const handleInput = ({ target }) => {
+    setState({
+      ...state,
+      [target.name]: target.value,
+    });
+  };
 
-	return (
-		<>
-			<Row gutter={16}>
-				{global.cart.map((svc, i) => {
-					return (
-						<Service
-							key={i + "-service"}
-							service={svc}
-							selected={true}
-							handleCart={removeService}
-						/>
-						// <li key={i + "-service"}>
-						// 	{svc.language} {svc.price}
-						// </li>
-					);
-				})}
-			</Row>
-			<Row gutter={16}>
-				<Col span={16} />
-				<Col span={8}>
-					<h4>Total Amount Due: ${global.cartTotal()}/hr</h4>
-				</Col>
-			</Row>
+  const submitPurchase = async () => {
+    axios
+      .post("/api/checkout", {
+        ...state,
+        purchased_service_ids: global.serviceIds(),
+      })
+      .then((response) => console.log(response))
+      .catch((err) => console.warn(err));
+  };
 
-			<Row gutter={16}>
-				<Col span={8}>
-					<h5> Billing Address </h5>
+  function handleChange(value) {
+    console.log(`selected ${value}`);
+  }
 
-					<Select
-						defaultValue="Select an Address"
-						style={{ width: 200 }}
-						onChange={handleChange}
-					>
-						{global.user.billingAddress.map((addr, i) => (
-							<Option key={i + "-billing"} value={addr._id}>
-								{addr.street}
-							</Option>
-						))}
-					</Select>
-					{/* <select>
+  //   const handleToken = async (token, addresses) => {
+  //     console.log("token", token);
+  //     const response = await axios.post("/api/checkout", { token, service });
+  //     const { status } = response.data;
+  //     console.log("Response:", response.data);
+  //     if (status === "success") {
+  //       toast("Success! Check email for details", { type: "success" });
+  //     } else {
+  //       toast("Something went wrong", { type: "error" });
+  //     }
+  //   };
+
+  return (
+    <>
+      <Row gutter={16}>
+        {global.cart.map((svc, i) => {
+          return (
+            <Service
+              key={i + "-service"}
+              service={svc}
+              selected={true}
+              handleCart={removeService}
+            />
+            // <li key={i + "-service"}>
+            // 	{svc.language} {svc.price}
+            // </li>
+          );
+        })}
+      </Row>
+      <Row gutter={16}>
+        <Col span={16} />
+        <Col span={8}>
+          <h4>Total Amount Due: ${global.cartTotal()}/hr</h4>
+        </Col>
+      </Row>
+      <Row gutter={16}>
+        <Col span={8}>
+          <input
+            type="text"
+            id="firstName"
+            placeholder="First Name"
+            name="firstName"
+            value={state.firstName}
+            onChange={handleInput}
+          />
+          <input
+            type="text"
+            id="lastName"
+            placeholder="Last Name"
+            name="lastName"
+            value={state.lastName}
+            onChange={handleInput}
+          />
+          <input
+            type="text"
+            id="email"
+            placeholder="email"
+            name="email"
+            value={state.email}
+            onChange={handleInput}
+          />
+        </Col>
+        <Col span={8}>
+          <h5> Billing Address </h5>
+
+          <Select
+            value={state.billingAddress}
+            style={{ width: 200 }}
+            onChange={handleChange}
+          >
+            {global.user.billingAddress.map((addr, i) => (
+              <Option key={i + "-billing"} value={addr._id}>
+                {addr.street}
+              </Option>
+            ))}
+          </Select>
+          {/* <select>
 						{global.user.billingAddress.map((addr, i) => (
 							<option key={i + "-billing"} value={addr._id}>
 								{addr.street}
 							</option>
 						))}
 					</select> */}
-				</Col>
-				<Col span={8}>
-					{/* remove shipping address? */}
-					{/* <h5> Shipping Address </h5>
+        </Col>
+
+        <Col span={8}>
+          {/* remove shipping address? */}
+          {/* <h5> Shipping Address </h5>
 
 					<select>
 						{global.user.shippingAddress.map((addr, i) => (
@@ -115,33 +163,33 @@ const CheckoutForm = () => {
 							</option>
 						))}
 					</select> */}
-				</Col>
-				<Col span={8}>
-					<Button
-						block
-						shape="round"
-						type="primary"
-						size="large"
-						onClick={submitPurchase}
-					>
-						Submit
-					</Button>
-				</Col>
-			</Row>
-			<Row gutter={16}>
-				<Col span={8}>
-					<Link
-						to={{
-							pathname: "/AddAddress",
-							state: {
-								type: "billingAddress"
-							}
-						}}
-					>
-						Add Billing Address
-					</Link>
-				</Col>
-				{/* <Col span={8}>
+        </Col>
+        <Col span={8}>
+          <Button
+            block
+            shape="round"
+            type="primary"
+            size="large"
+            onClick={submitPurchase}
+          >
+            Submit
+          </Button>
+        </Col>
+      </Row>
+      <Row gutter={16}>
+        <Col span={8}>
+          <Link
+            to={{
+              pathname: "/AddAddress",
+              state: {
+                type: "billingAddress",
+              },
+            }}
+          >
+            Add Billing Address
+          </Link>
+        </Col>
+        {/* <Col span={8}>
 					<Link
 						to={{
 							pathname: "/AddAddress",
@@ -153,86 +201,50 @@ const CheckoutForm = () => {
 						Add Shipping Address
 					</Link>
 				</Col> */}
-				{/* <Col span={8} /> */}
-			</Row>
-		</>
-	);
+        {/* <Col span={8} /> */}
+      </Row>
+      {/* <Row gutter={16}>
+        <Col span={8} />
+        <Col span={8}>
+          {/* <h4>Total Amount Due: ${paymentTotal}/hr</h4> */}
+      {/* </Col>
+        <Col span={8}>
+          <StripeCheckout
+            stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
+            token={handleToken}
+            amount={service.price * 100}
+            name={service.language}
+            billingAddress
+            // shippingAddress
+          />
+        </Col>
+      </Row> */}{" "}
+    </>
+  );
 
-	// const [global, dispatch] = useGlobalState();
-	// // const [service] = useState({
-	// //   language: "",
-	// //   price: null,
-	// //   coder: "",
-	// // });
+  // const paymentTotal = state.cart.reduce(function(prev, cur) {
+  // 	return prev + cur.price;
+  // }, 0);
 
-	/* <StripeCheckout
-						stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
-						token={handleToken}
-						amount={service.price * 100}
-						name={service.language}
-						billingAddress
-						shippingAddress
-					/> */
-
-	// // const handleToken = async (token, addresses) => {
-	// //   console.log("token", token);
-	// //   const response = await axios.post("/api/checkout", { token, service });
-	// //   const { status } = response.data;
-	// //   console.log("Response:", response.data);
-	// //   if (status === "success") {
-	// //     toast("Success! Check email for details", { type: "success" });
-	// //   } else {
-	// //     toast("Something went wrong", { type: "error" });
-	// //   }
-	// // };
-
-	// const removeService = service => {
-	// 	toast("Removed from Cart", { type: "error", autoClose: 2000 });
-	// 	console.log("REMOVE", service);
-	// 	dispatch({
-	// 		type: "CART_REMOVE_SERVICE_BY_ID",
-	// 		payload: service._id
-	// 	});
-	// };
-
-	// const paymentTotal = state.cart.reduce(function(prev, cur) {
-	// 	return prev + cur.price;
-	// }, 0);
-
-	// return (
-	// 	<div>
-	// 		<Row gutter={16}>
-	// 			{state.cart.map((service, i) => {
-	// 				return (
-	// 					<Service
-	// 						key={i + "-service"}
-	// 						service={service}
-	// 						selected={true}
-	// 						handleCart={removeService}
-	// 					/>
-	// 				);
-	// 			})}
-	// 			{/* <h1>{service.language}</h1> */}
-	// 			{/* <h3>On Sale · ${service.price}</h3> */}
-	// 		</Row>
-	// 		<Row gutter={16}>
-	// 			<Col span={8} />
-	// 			<Col span={8}>
-	// 				<h4>Total Amount Due: ${paymentTotal}/hr</h4>
-	// 			</Col>
-	// 			<Col span={8}>
-	// 				<StripeCheckout
-	// 					stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
-	// 					token={handleToken}
-	// 					amount={service.price * 100}
-	// 					name={service.language}
-	// 					billingAddress
-	// 					shippingAddress
-	// 				/>
-	// 			</Col>
-	// 		</Row>
-	// 	</div>
-	// );
+  // return (
+  // 	<div>
+  // 		<Row gutter={16}>
+  // 			{state.cart.map((service, i) => {
+  // 				return (
+  // 					<Service
+  // 						key={i + "-service"}
+  // 						service={service}
+  // 						selected={true}
+  // 						handleCart={removeService}
+  // 					/>
+  // 				);
+  // 			})}
+  // 			{/* <h1>{service.language}</h1> */}
+  // 			{/* <h3>On Sale · ${service.price}</h3> */}
+  // 		</Row>
+  //
+  // 	</div>
+  // );
 };
 
 export default CheckoutForm;
