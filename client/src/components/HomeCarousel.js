@@ -14,24 +14,28 @@ const HomeCarousel = () => {
 		>
 			<div style={{ color: "#EAF0CE" }}>
 				<img
+					alt="coding"
 					src={require("../images/chris-ried-ieic5Tq8YMk-unsplash.jpg")}
 					style={{ width: 775 }}
-				/>
+					/>
 			</div>
 			<div style={{ color: "#EAF0CE" }}>
 				<img
+					alt="coding"
 					src={require("../images/dhaval-parmar-dnPniNPUe4o-unsplash.jpg")}
 					style={{ width: 775 }}
-				/>
+					/>
 			</div>
 			<div style={{ color: "#EAF0CE" }}>
 				<img
+					alt="coding"
 					src={require("../images/ilya-pavlov-OqtafYT5kTw-unsplash.jpg")}
 					style={{ width: 775 }}
-				/>
+					/>
 			</div>
 			<div style={{ color: "#EAF0CE" }}>
 				<img
+					alt="coding"
 					src={require("../images/luca-bravo-XJXWbfSo2f0-unsplash.jpg")}
 					style={{ width: 775 }}
 				/>
