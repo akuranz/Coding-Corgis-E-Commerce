@@ -40,6 +40,7 @@ const Login = (props) => {
 
     axios
       .post("/auth/login", {
+        ...state,
         username: state.username,
         password: state.password,
       })
