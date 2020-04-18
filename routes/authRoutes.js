@@ -39,10 +39,9 @@ router.post(
   (req, res) => {
     console.log("logged in", req.user);
     var userInfo = {
-      _id: req.user._id,
-      username: req.user.username,
-      services: req.user.services,
+      ...req.user,
     };
+    delete userInfo.password;
     res.send(userInfo);
   }
 );

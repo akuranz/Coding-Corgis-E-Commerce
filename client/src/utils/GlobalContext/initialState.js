@@ -2,7 +2,10 @@ export const initialState = {
   cart: [],
   user: {
     billingAddress: [],
-    shippingAddress: [],
+    // shippingAddress: [],
+    email: "",
+    firstName: "",
+    lastName: "",
   },
   serviceIds: function () {
     return this.cart.map((s) => s._id);
