@@ -29,7 +29,7 @@ const Signup = () => {
   // const onFormLayoutChange = ({ size }) => {
   //   setComponentSize(size);
   // };
-  const [formLayout] = useState("horizontal");
+  // const [formLayout] = useState("horizontal");
 
   const [state, setState] = useState({
     username: "",
