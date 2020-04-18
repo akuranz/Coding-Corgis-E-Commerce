@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Service from "../components/Service";
-import { Button, Row, Col, Dropdown, Select } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Button, Row, Col, Select } from "antd";
+// import { DownOutlined } from "@ant-design/icons";
 
 // import { loadStripe } from "@stripe/stripe-js";
 // import StripeCheckout from "react-stripe-checkout";
@@ -164,8 +164,8 @@ const CheckoutForm = () => {
 	// //   price: null,
 	// //   coder: "",
 	// // });
-	{
-		/* <StripeCheckout
+
+	/* <StripeCheckout
 						stripeKey="pk_test_4TbuO6qAW2XPuce1Q6ywrGP200NrDZ2233"
 						token={handleToken}
 						amount={service.price * 100}
@@ -173,7 +173,6 @@ const CheckoutForm = () => {
 						billingAddress
 						shippingAddress
 					/> */
-	}
 
 	// // const handleToken = async (token, addresses) => {
 	// //   console.log("token", token);
