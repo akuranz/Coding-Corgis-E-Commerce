@@ -9,7 +9,7 @@ import AllLayout from "./components/AllLayout";
 import "./App.css";
 import { GlobalStateProvider } from "./utils/GlobalContext";
 import User from "./pages/User";
-import AddAddress from "./pages/AddAddress";
+// import AddAddress from "./pages/AddAddress";
 
 const App = () => {
 	return (

@@ -5,8 +5,8 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import API from "../utils/API";
 import Service from "../components/Service";
-import { Button, Row, Col, Dropdown, Select } from "antd";
-import { DownOutlined } from "@ant-design/icons";
+import { Button, Row, Col, Select } from "antd";
+// import { DownOutlined } from "@ant-design/icons";
 
 // import { loadStripe } from "@stripe/stripe-js";
 // import StripeCheckout from "react-stripe-checkout";
