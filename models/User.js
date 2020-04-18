@@ -14,6 +14,26 @@ const userSchema = new Schema({
     unique: false,
     required: true,
   },
+  email: {
+    type: String,
+    unique: false,
+    required: true,
+  },
+  firstName: {
+    type: String,
+    unique: false,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    unique: false,
+    required: true,
+  },
+  password: {
+    type: String,
+    unique: false,
+    required: true,
+  },
   services: [
     {
       type: Schema.Types.ObjectId,
