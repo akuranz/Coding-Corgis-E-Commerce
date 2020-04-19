@@ -1,4 +1,5 @@
 const db = require("../models");
+const sendMail = require("../routes/transporter");
 
 // Defining methods for the serviceController
 module.exports = {
@@ -15,6 +16,17 @@ module.exports = {
         billingAddress: req.body.billingAddress,
         service: req.body.purchased_service_ids,
       });
+
+      const services = await db.Service.find({
+        _id: {
+          $in: req.body.purchased_service_ids,
+        },
+      });
+
+      // console.log("checkoutcontrollerr SERVICES", services);
+
+      await sendMail(req.body, services);
+
       const User = await db.User.findById(req.body._id).populate(
         "billingAddress"
       );
