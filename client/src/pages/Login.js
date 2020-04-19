@@ -84,7 +84,6 @@ const Login = (props) => {
   // } else {
   return (
     <div>
-
       {global.user._id && <Redirect to="/" />}
 
       {/* {Object.keys(global.user).length && <Redirect to="/" />} */}

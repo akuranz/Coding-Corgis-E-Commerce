@@ -21,20 +21,16 @@ const CheckoutForm = () => {
   const [global, dispatch] = useGlobalState();
   const [state, setState] = useState({
     ...global.user,
-    billingAddress: global.user.billingAddress[0] || undefined,
+    billingAddress: global.user.billingAddress[0] || "",
+    // billingAddress: "",
   });
+  console.log("GLobal Billing Address", global.user.billingAddress);
   //   const [service] = useState({
   //     language: "",
   //     price: null,
   //     coder: "",
   //   });
 
-  // const handleInput = ({ target }) => {
-  //   setState({
-  //     ...state,
-  //     [target.name]: target.value,
-  //   });
-  // };
   console.log(global);
 
   const removeService = (service) => {
@@ -54,14 +50,52 @@ const CheckoutForm = () => {
   };
 
   const submitPurchase = async () => {
-    axios
-      .post("/api/checkout", {
+    try {
+      const response = await axios.post("/api/checkout", {
         ...state,
         purchased_service_ids: global.serviceIds(),
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.warn(err));
+      });
+      console.log(response);
+      await axios.post("/send", {
+        ...state,
+        firstName: global.user.firstName,
+        lastName: global.userlastName,
+        email: global.user.email,
+        // message: message,
+      });
+    } catch (res) {
+      if (res.data.msg === "success") {
+        alert("Message Sent.");
+        this.resetForm();
+      } else if (res.data.msg === "fail") {
+        alert("Message failed to send.");
+      }
+    }
   };
+  //   axios
+  //     .post("/api/checkout", {
+  //       ...state,
+  //       purchased_service_ids: global.serviceIds(),
+  //     })
+  //     .then((response) =>
+  //       console.log(response).post("/send", {
+  //         ...state,
+  //         firstName: global.user.firstName,
+  //         lastName: global.userlastName,
+  //         email: global.user.email,
+  //         // message: message,
+  //       })
+  //     )
+  //     .then((response) => {
+  //       if (response.data.msg === "success") {
+  //         alert("Message Sent.");
+  //         this.resetForm();
+  //       } else if (response.data.msg === "fail") {
+  //         alert("Message failed to send.");
+  //       }
+  //     })
+  //     .catch((err) => console.warn(err));
+  // };
 
   function handleChange(value) {
     console.log(`selected ${value}`);
@@ -143,13 +177,6 @@ const CheckoutForm = () => {
               </Option>
             ))}
           </Select>
-          {/* <select>
-						{global.user.billingAddress.map((addr, i) => (
-							<option key={i + "-billing"} value={addr._id}>
-								{addr.street}
-							</option>
-						))}
-					</select> */}
         </Col>
 
         <Col span={8}>

@@ -55,6 +55,7 @@ const Signup = () => {
     //request to server to add a new username/password
     axios
       .post("/auth", {
+        ...state,
         username: state.username,
         password: state.password,
       })
