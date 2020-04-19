@@ -32,6 +32,9 @@ const Signup = () => {
   // const [formLayout] = useState("horizontal");
 
   const [state, setState] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
     username: "",
     password: "",
     confirmPassword: "",
@@ -105,6 +108,57 @@ const Signup = () => {
           </Radio.Group>
         </Form.Item> */}
           <Form.Item
+            label="First Name"
+            name="firstName"
+            id="firstName"
+            type="text"
+            placeholder="First Name"
+            value={state.username}
+            onChange={handleChange}
+            rules={[
+              {
+                required: true,
+                message: "Please input a first name!",
+              },
+            ]}
+          >
+            <Input name="firstName" />
+          </Form.Item>
+          <Form.Item
+            label="Last Name"
+            name="lastName"
+            id="lastName"
+            type="text"
+            placeholder="Last Name"
+            value={state.username}
+            onChange={handleChange}
+            rules={[
+              {
+                required: true,
+                message: "Please input a last name!",
+              },
+            ]}
+          >
+            <Input name="lastName" />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            id="email"
+            type="text"
+            placeholder="Email"
+            value={state.username}
+            onChange={handleChange}
+            rules={[
+              {
+                required: true,
+                message: "Please input an email!",
+              },
+            ]}
+          >
+            <Input name="email" />
+          </Form.Item>
+          <Form.Item
             label="Username"
             name="username"
             id="username"
@@ -132,7 +186,7 @@ const Signup = () => {
             rules={[
               {
                 required: true,
-                message: "Please input your password!",
+                message: "Please input a password!",
               },
             ]}
           >
