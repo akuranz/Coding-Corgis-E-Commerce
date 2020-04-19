@@ -17,17 +17,17 @@ const userSchema = new Schema({
   email: {
     type: String,
     unique: false,
-    required: true,
+    // required: true,
   },
   firstName: {
     type: String,
     unique: false,
-    required: true,
+    // required: true,
   },
   lastName: {
     type: String,
     unique: false,
-    required: true,
+    // required: true,
   },
   password: {
     type: String,
@@ -46,12 +46,12 @@ const userSchema = new Schema({
       ref: "Address",
     },
   ],
-  shippingAddress: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Address",
-    },
-  ],
+  // shippingAddress: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Address",
+  //   },
+  // ],
 });
 
 userSchema.methods = {

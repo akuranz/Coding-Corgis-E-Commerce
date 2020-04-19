@@ -40,6 +40,7 @@ const Login = (props) => {
 
     axios
       .post("/auth/login", {
+        ...state,
         username: state.username,
         password: state.password,
       })
@@ -83,7 +84,6 @@ const Login = (props) => {
   // } else {
   return (
     <div>
-
       {global.user._id && <Redirect to="/" />}
 
       {/* {Object.keys(global.user).length && <Redirect to="/" />} */}

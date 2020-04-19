@@ -5,12 +5,12 @@ const checkoutSchema = new Schema({
   User: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    // required: true,
   },
   billingAddress: {
     type: Schema.Types.ObjectId,
     ref: "Address",
-    required: true,
+    // required: true,
   },
   // shippingAddress: {
   //   type: Schema.Types.ObjectId,

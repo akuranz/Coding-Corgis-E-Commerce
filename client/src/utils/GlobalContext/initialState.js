@@ -2,7 +2,6 @@ export const initialState = {
   cart: [],
   user: {
     billingAddress: [],
-    // shippingAddress: [],
     email: "",
     firstName: "",
     lastName: "",
