@@ -13,6 +13,7 @@ import About from "../pages/About";
 import Categories from "../pages/Categories";
 import Checkout from "../pages/Checkout";
 import AddAddress from "../pages/AddAddress";
+import OrderHistory from "../pages/OrderHistory";
 
 // browse components
 import BrowseReact from "./browse/BrowseReact";
@@ -44,6 +45,7 @@ const PageContent = () => {
 				<Route exact path="/categories" component={Categories} />
 				<Route exact path="/checkout" component={Checkout} />
 				<Route exact path="/AddAddress" component={AddAddress} />
+
 				<Route exact path="/browse" component={Browse} />
 				<Route exact path="/browse/React" component={BrowseReact} />
 				<Route exact path="/browse/Javascript" component={BrowseJavascript} />
@@ -55,6 +57,9 @@ const PageContent = () => {
 				<Route exact path="/browse/SASS" component={BrowseSASS} />
 				<Route exact path="/browse/Redux" component={BrowseRedux} />
 				<Route exact path="/browse/APIs" component={BrowseAPIs} />
+
+				<Route exact path="/OrderHistory" component={OrderHistory} />
+
 			</div>
 		</Content>
 	);
