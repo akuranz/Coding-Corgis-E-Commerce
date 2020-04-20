@@ -54,11 +54,14 @@ const Browse = () => {
 	}, []);
 
 	const selectService = service => {
-		toast("Added to Cart", { type: "success", autoClose: 2000 });
-		dispatch({
-			type: "CART_ADD_SERVICE",
-			payload: service
-		});
+		if (state.user._id) {
+			toast("Added to Cart", { type: "success", autoClose: 2000 });
+			return dispatch({
+				type: "CART_ADD_SERVICE",
+				payload: service
+			});
+		}
+		toast("Must be logged in to add services to cart", { type: "error", autoClose: 2000 });
 	};
 
 	// console.log("services", services);

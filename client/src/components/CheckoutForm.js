@@ -17,24 +17,79 @@ toast.configure();
 
 const { Option } = Select;
 
+// var table1 = [
+//   {
+//     id: 1,
+//     name: 'a'
+//   },
+//   {
+//     id: 2,
+//     name: 'b'
+//   },
+//   {
+//     id: 3,
+//     name: 'c'
+//   },
+// ]
+// var table2 = [
+//   {
+//     foriegn: 1,
+//     val: 'A'
+//   },
+//   {
+//     foriegn: 2,
+//     val: 'B'
+//   },
+// ]
+
+// var join = [
+//   {
+//     id: 1,
+//     name: 'a',
+//     foriegn: 1,
+//     val: 'A'
+//   },
+//   {
+//     id: 1,
+//     name: 'a',
+//     foriegn: 2,
+//     val: 'B'
+//   },
+//   {
+//     id: 2,
+//     name: 'b',
+//     foriegn: 1,
+//     val: 'A'
+//   },
+//   {
+//     id: 2,
+//     name: 'b',
+//     foriegn: 2,
+//     val: 'B'
+//   },
+//   {
+//     id: 3,
+//     name: 'c',
+//     foriegn: 1,
+//     val: 'A'
+//   },
+//   {
+//     id: 3,
+//     name: 'c',
+//     foriegn: 2,
+//     val: 'B'
+//   },
+// ]
+
 const CheckoutForm = () => {
   const [global, dispatch] = useGlobalState();
   const [state, setState] = useState({
     ...global.user,
-    billingAddress: global.user.billingAddress[0] || undefined,
+    billingAddress: global.user.billingAddress[0] || { _id: "" },
+    // billingAddress: "",
   });
-  //   const [service] = useState({
-  //     language: "",
-  //     price: null,
-  //     coder: "",
-  //   });
+  console.log("GLobal Billing Address", global.user.billingAddress);
 
-  // const handleInput = ({ target }) => {
-  //   setState({
-  //     ...state,
-  //     [target.name]: target.value,
-  //   });
-  // };
   console.log(global);
 
   const removeService = (service) => {
@@ -54,30 +109,34 @@ const CheckoutForm = () => {
   };
 
   const submitPurchase = async () => {
-    axios
-      .post("/api/checkout", {
+    try {
+      const response = await axios.post("/api/checkout", {
         ...state,
         purchased_service_ids: global.serviceIds(),
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.warn(err));
+      });
+      console.log("info to db", response);
+      // const message = await axios.post("/send", {
+      //   ...state,
+      //   firstName: global.user.firstName,
+      //   lastName: global.user.lastName,
+      //   email: global.user.email,
+      //   // message: message,
+      // });
+      // console.log("info to customer", message);
+    } catch (error) {
+      console.warn(error);
+      // if (res.data.msg === "success") {
+      //   alert("Message Sent.");
+      //   this.resetForm();
+      // } else if (res.data.msg === "fail") {
+      //   alert("Message failed to send.");
+      // }
+    }
   };
 
   function handleChange(value) {
     console.log(`selected ${value}`);
   }
-
-  //   const handleToken = async (token, addresses) => {
-  //     console.log("token", token);
-  //     const response = await axios.post("/api/checkout", { token, service });
-  //     const { status } = response.data;
-  //     console.log("Response:", response.data);
-  //     if (status === "success") {
-  //       toast("Success! Check email for details", { type: "success" });
-  //     } else {
-  //       toast("Something went wrong", { type: "error" });
-  //     }
-  //   };
 
   return (
     <>
@@ -133,7 +192,7 @@ const CheckoutForm = () => {
           <h5> Billing Address </h5>
 
           <Select
-            value={state.billingAddress}
+            value={state.billingAddress._id}
             style={{ width: 200 }}
             onChange={handleChange}
           >
@@ -143,13 +202,6 @@ const CheckoutForm = () => {
               </Option>
             ))}
           </Select>
-          {/* <select>
-						{global.user.billingAddress.map((addr, i) => (
-							<option key={i + "-billing"} value={addr._id}>
-								{addr.street}
-							</option>
-						))}
-					</select> */}
         </Col>
 
         <Col span={8}>

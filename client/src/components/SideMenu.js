@@ -8,7 +8,8 @@ import {
 	AppstoreOutlined,
 	ShoppingCartOutlined,
 	QuestionCircleOutlined,
-	LogoutOutlined
+	LogoutOutlined,
+	ClockCircleOutlined
 } from "@ant-design/icons";
 import axios from "axios";
 
@@ -55,21 +56,22 @@ const SideMenu = props => {
 				</span>
 				<Link to="/browse" />
 			</Menu.Item>
-			<Menu.Item>
-				<ShoppingCartOutlined />
-				<span>
-					My Cart <RightOutlined />
-				</span>
-				<Link to="/cart" />
-			</Menu.Item>
+			{state.user._id && (
+				<Menu.Item>
+					<ShoppingCartOutlined />
+					<span>
+						My Cart <RightOutlined />
+					</span>
+					<Link to="/cart" />
+				</Menu.Item>
+			)}
 			{state.user._id && (
 				<Menu.Item>
 					<span>
-						 Order History <RightOutlined />
+						<ClockCircleOutlined /> Order History <RightOutlined />
 					</span>
 					<Link to="/OrderHistory" />
 				</Menu.Item>
-				
 			)}
 			<Menu.Item>
 				<QuestionCircleOutlined />

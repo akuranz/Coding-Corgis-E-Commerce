@@ -37,10 +37,14 @@ router.post(
   },
   passport.authenticate("local"),
   (req, res) => {
-    console.log("logged in", req.user);
     var userInfo = {
+      // _id: req.user._id,
+      // username: req.user.username,
+      // services: req.user.services,
+      // billingAddress: req.user.billingAddress,
       ...req.user,
     };
+    console.log("logged in", userInfo);
     delete userInfo.password;
     res.send(userInfo);
   }
@@ -49,6 +53,7 @@ router.post(
 router.get("/", (req, res, next) => {
   console.log("===== user!!======");
   console.log(req.user);
+
   if (req.user) {
     res.json({ user: req.user });
   } else {

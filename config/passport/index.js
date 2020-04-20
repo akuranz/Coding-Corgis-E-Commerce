@@ -13,12 +13,15 @@ passport.serializeUser((user, done) => {
 // user object attaches to the request as req.user
 passport.deserializeUser((id, done) => {
   console.log("DeserializeUser called");
-  User.findOne({ _id: id }, "-password", (err, user) => {
-    console.log("*** Deserialize user, user:");
-    console.log(user);
-    console.log("--------------");
-    done(null, user);
-  });
+  User.findOne({ _id: id })
+    .select("-password")
+    .populate("billingAddress")
+    .then((user) => {
+      console.log("*** Deserialize user, user:");
+      console.log(user);
+      console.log("--------------");
+      done(null, user);
+    });
 });
 
 //  Use Strategies
