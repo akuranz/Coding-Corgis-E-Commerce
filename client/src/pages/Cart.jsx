@@ -25,6 +25,7 @@ const Cart = () => {
 
 	const orderServices = () => {
 		const serviceIDs = state.cart.map(s => s._id);
+		
 		console.log(serviceIDs);
 	};
 

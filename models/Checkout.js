@@ -17,7 +17,7 @@ const checkoutSchema = new Schema({
   //   ref: "Address",
   //   required: true,
   // },
-  service: [
+  services: [
     {
       type: Schema.Types.ObjectId,
       ref: "Service",
