@@ -7,8 +7,8 @@ export default {
     return axios.get("/api/services");
   },
   checkAuth: () => axios.get("/auth"),
-  getUser: function () {
+  getOrders: function () {
     console.log("we are in getServicess");
-    return axios.get("/api/user");
+    return axios.get("/api/orderHistory");
   },
 };

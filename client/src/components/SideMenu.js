@@ -62,6 +62,15 @@ const SideMenu = props => {
 				</span>
 				<Link to="/cart" />
 			</Menu.Item>
+			{state.user._id && (
+				<Menu.Item>
+					<span>
+						 Order History <RightOutlined />
+					</span>
+					<Link to="/OrderHistory" />
+				</Menu.Item>
+				
+			)}
 			<Menu.Item>
 				<QuestionCircleOutlined />
 				<span>
