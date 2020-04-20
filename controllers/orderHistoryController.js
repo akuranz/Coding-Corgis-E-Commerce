@@ -4,15 +4,19 @@ const db = require("../models");
 module.exports = {
   findOrders: async (req, res) => {
     try {
-      await db.User.find({ username: req.user.username} )
-      .populate("service")
+      await db.User.aggregate([
+        { $lookup:
+           {
+             from: 'services',
+             localField: 'services',
+             foreignField: '_id',
+             as: 'servicedetails'
+           }
+         }
+        ])
       .then(dbModel => res.json(dbModel))
-      const services = await db.Service.find({
-        _id: {
-          $in: req.body.purchased_service_ids,
-        },
-      });
-      console.log("Purchased Services: " + services);
+      
+      console.log("Purchased Services: " + res.json(dbModel));
     } catch (error) {
       console.log(error);
       res.sendStatus(500);
