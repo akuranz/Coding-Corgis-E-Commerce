@@ -2,6 +2,7 @@
 // var router = express.Router();
 var nodemailer = require("nodemailer");
 const creds = require("../config/config");
+// const logo = require("../client/src/images/coding-corgi-logo-192h.png");
 
 function sendMail(obj, arr) {
   return new Promise((resolve, reject) => {
@@ -36,7 +37,7 @@ function sendMail(obj, arr) {
 		      <tr>
             <td style="text-align: center;"><img alt="Coding Corgis Logo" border="0" class="emailImage" 
             data-ratio-lock="true" data-unit="px" 
-            src="../client/src/images/coding-corgi-logo-192h.png" style="height: 260px; width: 600px;" /></a></td>
+            src="cid:coding-corgi-logo-192h.png" style="height: 260px; width: 600px;" /></a></td>
 		      <tr>
 	      </tbody>
       </table>
@@ -113,10 +114,15 @@ function sendMail(obj, arr) {
       <footer>
     `;
       return {
-        from: "Coding Corgies",
+        from: "Coding Corgi's",
         to: [obj.email, "akuranz@gmail.com"],
-        subject: "Thank you for ordering from Coding Corgis!",
+        subject: "Thank you for ordering from Coding Corgi's!",
         html: content,
+        // attachments: [{
+        //   filename: "coding-corgi-logo-192h.png",
+        //   path: "../client/src/images/coding-corgi-logo-192h.png",
+        //   cid: "coding-corgi-logo-192h.png"
+        // }]
       };
     }
   });
