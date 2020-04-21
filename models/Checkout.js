@@ -12,12 +12,9 @@ const checkoutSchema = new Schema({
     ref: "Address",
     // required: true,
   },
-  // shippingAddress: {
-  //   type: Schema.Types.ObjectId,
-  //   ref: "Address",
-  //   required: true,
-  // },
-  services: [
+
+  service: [
+
     {
       type: Schema.Types.ObjectId,
       ref: "Service",

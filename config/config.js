@@ -1,4 +1,6 @@
 module.exports = {
-  USER: "CodingCorgis@gmail.com",
-  PASS: "CodingCorgis2020",
+
+  USER: process.env.GMAIL_ADDR,
+  PASS: process.env.GMAIL_PWD,
+
 };
