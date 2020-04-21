@@ -22,9 +22,17 @@ const CheckoutForm = () => {
     billingAddress: global.user.billingAddress[0] || { _id: "" },
     
   });
+  const [loading, setLoading] = useState(false);
   console.log("GLobal Billing Address", global.user.billingAddress);
 
   console.log(global);
+
+  const enterLoading = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 8000);
+  };
 
   const removeService = (service) => {
     toast("Removed from Cart", { type: "error", autoClose: 2000 });
@@ -34,22 +42,34 @@ const CheckoutForm = () => {
       payload: service._id,
     });
   };
-
+  
   const handleInput = ({ target }) => {
     setState({
       ...state,
       [target.name]: target.value,
     });
   };
-
+  
   const submitPurchase = async () => {
+    enterLoading();
     try {
       const response = await axios.post("/api/checkout", {
         ...state,
         purchased_service_ids: global.serviceIds(),
       });
       console.log("info to db", response);
-      
+
+      toast(`Purchase Complete! A confirmation email has been sent to ${global.user.email}`, { type: "success", autoClose: 8000 });
+      setLoading(false);
+      // const message = await axios.post("/send", {
+        //   ...state,
+        //   firstName: global.user.firstName,
+        //   lastName: global.user.lastName,
+        //   email: global.user.email,
+        //   // message: message,
+        // });
+      // console.log("info to customer", message);
+
     } catch (error) {
       console.warn(error);
       
@@ -137,6 +157,7 @@ const CheckoutForm = () => {
             type="primary"
             size="large"
             onClick={submitPurchase}
+            loading={loading}
           >
             Submit
           </Button>
