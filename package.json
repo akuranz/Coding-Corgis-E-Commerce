@@ -34,6 +34,7 @@
     "bcrypt": "^4.0.1",
     "compression": "^1.7.4",
     "customize-cra": "^0.9.1",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "if-env": "^1.0.4",

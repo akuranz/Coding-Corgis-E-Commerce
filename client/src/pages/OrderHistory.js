@@ -7,48 +7,44 @@ import { Button } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 
 const OrderHistory = () => {
-	const [global, dispatch] = useGlobalState();
-	const [orders, setOrders] = useState([]);
-	console.log("This is the state inside orderHistory.js", global);
+  const [global, dispatch] = useGlobalState();
+  const [orders, setOrders] = useState([]);
+  console.log("This is the state inside orderHistory.js", global);
 
-	useEffect(() => {
-		loadOrders();
-	  }, []);
+  useEffect(() => {
+    loadOrders();
+  }, []);
 
-	  function loadOrders() {
-		console.log("OH route check C1");
-		API.getOrders()
-		  .then(res => {
-			setOrders(res.data);
-		  })
-		  .catch(err => console.log(err));
-		  
-	  };
+  function loadOrders() {
+    console.log("OH route check C1");
+    API.getOrders()
+      .then((res) => {
+        console.log("ORDER HISTORY", res);
+        setOrders(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
-	// useEffect(() => {
-	// 	function loadOrders() {
-	// 		API.getOrders()
-	// 			.then(res => {
-	// 				console.log("res", res);
-	// 				setOrders(res.data);
-	// 				// for (let i = 0; i < services.length; i++) {
-	// 				// 	servicesArray.push(services[i].language);
-	// 				// }
-	// 			})
-	// 			.catch(err => console.log(err));
-	// 	}
-	// 	loadOrders();
-	// }, []);
+  // useEffect(() => {
+  // 	function loadOrders() {
+  // 		API.getOrders()
+  // 			.then(res => {
+  // 				console.log("res", res);
+  // 				setOrders(res.data);
+  // 				// for (let i = 0; i < services.length; i++) {
+  // 				// 	servicesArray.push(services[i].language);
+  // 				// }
+  // 			})
+  // 			.catch(err => console.log(err));
+  // 	}
+  // 	loadOrders();
+  // }, []);
 
-
-
-	return (
-		<div>
-			<h2>Order History</h2>
-			<ul>
-
-
-			{/* {orders.map((service, i) => {
+  return (
+    <div>
+      <h2>Order History</h2>
+      <ul>
+        {/* {orders.map((service, i) => {
 								return (
 									<Service
 										key={i + "-service"}
@@ -57,21 +53,16 @@ const OrderHistory = () => {
 								);
 							})} */}
 
-
-		{orders.map(order => (
-        <li className="list-group-item">
-		  {order.services.map(service => (
-			  <li className="list-group-item"> {service}</li>
-		  )
-			)}
-        </li>
-      ))}
-
-
-
-			</ul>
-		</div>
-	);
+        {/* {orders.map((order) => (
+          <li className="list-group-item">
+            {order.services.map((service) => (
+              <li className="list-group-item"> {service}</li>
+            ))}
+          </li>
+        ))} */}
+      </ul>
+    </div>
+  );
 };
 
 export default OrderHistory;
