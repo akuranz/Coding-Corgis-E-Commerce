@@ -113,7 +113,7 @@ const Signup = () => {
             id="firstName"
             type="text"
             placeholder="First Name"
-            value={state.username}
+            value={state.firstName}
             onChange={handleChange}
             rules={[
               {
@@ -130,7 +130,7 @@ const Signup = () => {
             id="lastName"
             type="text"
             placeholder="Last Name"
-            value={state.username}
+            value={state.lastName}
             onChange={handleChange}
             rules={[
               {
@@ -147,7 +147,7 @@ const Signup = () => {
             id="email"
             type="text"
             placeholder="Email"
-            value={state.username}
+            value={state.email}
             onChange={handleChange}
             rules={[
               {
@@ -192,70 +192,6 @@ const Signup = () => {
           >
             <Input.Password name="password" />
           </Form.Item>
-
-          {/* <Form.Item
-					label="confirmPassword"
-					name="confirmPassword"
-					placeholder="confirmPassword"
-					type="confirmPassword"
-					value={state.confirmPassword}
-					onChange={handleChange}
-					rules={[
-						{
-							required: true,
-							message: "Please input your password again!"
-						}
-					]}
-				>
-					<Input.Password name="confirmPassword" />
-				</Form.Item> */}
-
-          {/* <Form.Item label="Select">
-					<Select>
-						<Select.Option value="demo">Demo</Select.Option>
-					</Select>
-				</Form.Item>
-				<Form.Item label="TreeSelect">
-					<TreeSelect
-						treeData={[
-							{
-								title: "Light",
-								value: "light",
-								children: [
-									{
-										title: "Bamboo",
-										value: "bamboo"
-									}
-								]
-							}
-						]}
-					/>
-				</Form.Item>
-				<Form.Item label="Cascader">
-					<Cascader
-						options={[
-							{
-								value: "zhejiang",
-								label: "Zhejiang",
-								children: [
-									{
-										value: "hangzhou",
-										label: "Hangzhou"
-									}
-								]
-							}
-						]}
-					/>
-				</Form.Item>
-				<Form.Item label="DatePicker">
-					<DatePicker />
-				</Form.Item>
-				<Form.Item label="InputNumber">
-					<InputNumber />
-				</Form.Item>
-				<Form.Item label="Switch">
-					<Switch />
-				</Form.Item> */}
           <Form.Item {...tailLayout}>
             <Button type="primary" htmlType="submit" onClick={handleSubmit}>
               Submit
