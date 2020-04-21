@@ -25,7 +25,7 @@ const Cart = () => {
 
 	const orderServices = () => {
 		const serviceIDs = state.cart.map(s => s._id);
-		
+
 		console.log(serviceIDs);
 	};
 
@@ -64,10 +64,24 @@ const Cart = () => {
 					</div>
 				)}
 			</Row>
+			<Row>
+				<h5>How do payments work?</h5>
+				<p>
+					After you submit your order, you will be emailed an invoice. The first
+					hour of each service will be billed upfront, and any additional time
+					spent by the coder will be recorded and billed to you after the
+					service is fully delivered.
+				</p>
+				<p>
+					We do not handle payments, those are between you and the coder
+					providing the service. We do however keep in close contact with our
+					coders and if they do not receive payment within 10 days you will
+					receive a penalty fee invoice from us.
+				</p>
+			</Row>
 			<Row gutter={16}>
-				<Col span={8} />
-				<Col span={8}>
-					<h4>Total Amount Due: ${priceTotal}/hr</h4>
+				<Col span={8} offset={8}>
+					<h4>Due Up front: ${priceTotal}</h4>
 				</Col>
 				<Col span={8}>
 					<Link to="/checkout">
@@ -78,14 +92,13 @@ const Cart = () => {
 							shape="round"
 							size="large"
 						>
-							CHECKOUT
+							CONTINUE TO CHECKOUT
 						</Button>
 					</Link>
 				</Col>
 			</Row>
 		</div>
 	);
-
 };
 
 export default Cart;
