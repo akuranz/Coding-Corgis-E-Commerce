@@ -2,9 +2,13 @@
 // var router = express.Router();
 var nodemailer = require("nodemailer");
 const creds = require("../config/config");
+
 const fs = require("fs");
 const path = require("path");
 const libPath = path.join(__dirname, "../config/emailTemplates");
+
+// const logo = require("../client/src/images/coding-corgi-logo-192h.png");
+
 
 function sendMail(obj, arr) {
   return new Promise((resolve, reject) => {
@@ -33,12 +37,14 @@ function sendMail(obj, arr) {
     });
 
     function parseMail(obj, arr) {
+
       return new Promise((resolve, reject) => {
         fs.readFile(
           path.resolve(libPath, "purchaseOrder.html"),
           "utf8",
           (err, data) => {
             if (err) return reject(err);
+
 
             const pageModel = {
               ...obj,
@@ -55,6 +61,7 @@ function sendMail(obj, arr) {
                 if (err) return reject(err);
                 const items = arr.map((item) => {
                   let copyT = itemT;
+
 
                   const dataObj = item.toObject();
 

@@ -14,4 +14,4 @@ export const initialState = {
   cartTotal: function () {
     return this.cart.reduce((previous, current) => previous + current.price, 0);
   },
-};
+  };
