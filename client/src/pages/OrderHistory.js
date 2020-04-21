@@ -8,14 +8,16 @@ import { RightOutlined } from "@ant-design/icons";
 import { Button, Row, Col, Select, Form, Input, Card } from "antd";
 
 const OrderHistory = () => {
+
 	const [global, dispatch] = useGlobalState();
 	const [orders, setOrders] = useState([]);
 	console.log("This is the state inside orderHistory.js", global);
 	console.log("state inside order history", orders)
 
-	useEffect(() => {
-		loadOrders();
-	  }, []);
+
+  useEffect(() => {
+    loadOrders();
+  }, []);
 
 	  function loadOrders() {
 		console.log("OH route check C1");
@@ -63,6 +65,7 @@ const OrderHistory = () => {
 			
 		
 	);
+
 };
 
 export default OrderHistory;
