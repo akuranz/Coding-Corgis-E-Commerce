@@ -34,7 +34,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/fullstackservices"
+  process.env.MONGODB_URI || "mongodb://user:password1@ds115752.mlab.com:15752/heroku_6gkr5qc8"
 );
 
 // Start the API server
