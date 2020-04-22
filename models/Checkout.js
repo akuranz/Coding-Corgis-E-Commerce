@@ -14,7 +14,6 @@ const checkoutSchema = new Schema({
   },
 
   service: [
-
     {
       type: Schema.Types.ObjectId,
       ref: "Service",
