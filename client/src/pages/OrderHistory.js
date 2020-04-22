@@ -71,6 +71,32 @@ const OrderHistory = () => {
       ))}
     </>
   );
+
+// 		{orders.map(order => (
+//         <li className="list-group-item">
+// 		  {order.orderdetails.map(orders => (
+// 			  <li className="list-group-item"> 
+// 			  <p>Customer Name: {order.firstName}</p>
+// 			  <p>Customer Email: {order.email}</p>
+// 			  <p>Confirmation Number: {orders._id}</p>
+// 			  <p>Order Date: {orders.date}</p>
+// 			  <p>Invoice: </p>
+// 			  {order.servicedetails.map(service => (
+// 				  <li className="list-group-item"> 
+// 				  <p>Service Ordered: {service.language}</p>
+// 				  <p>Service Price: {service.price}</p>
+// 				  <p>Coder: {service.coder}</p>
+// 				</li>
+				  
+// 			  ))}
+// 			</li>
+// 		  ))}
+
+//         </li>
+//       	))}
+// 		</>
+// 	);
+
 };
 
 export default OrderHistory;
