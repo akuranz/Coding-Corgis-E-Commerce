@@ -8,34 +8,30 @@ import { RightOutlined } from "@ant-design/icons";
 import { Button, Row, Col, Select, Form, Input, Card } from "antd";
 
 const OrderHistory = () => {
-
-	const [global, dispatch] = useGlobalState();
-	const [orders, setOrders] = useState([]);
-	console.log("This is the state inside orderHistory.js", global);
-	console.log("state inside order history", orders)
-
+  const [global, dispatch] = useGlobalState();
+  const [orders, setOrders] = useState([]);
+  console.log("This is the state inside orderHistory.js", global);
+  console.log("state inside order history", orders);
 
   useEffect(() => {
     loadOrders();
   }, []);
 
-	  function loadOrders() {
-		console.log("OH route check C1");
-		API.getOrders()
-		  .then(res => {
-			setOrders(res.data);
-		  })
-		  .catch(err => console.log(err));
-		  
-	  };
-	  
+  function loadOrders() {
+    console.log("OH route check C1");
+    API.getOrders()
+      .then((res) => {
+        console.log(res.data);
+        setOrders(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
 
-	return (
-		<>
-			<h2>Order History</h2>
-	
+  return (
+    <>
+      <h2>Order History</h2>
 
-		{/* {orders.map(order => (
+      {/* {orders.map(order => (
         <Row span={6} className="list-group-item">
 		  {order.servicedetails.map(service => (
 			  <Card>
@@ -51,20 +47,30 @@ const OrderHistory = () => {
         </Row>
       	))} */}
 
-		{orders.map(order => (
-        <li className="list-group-item">
-		  {order.orderdetails.map(orders => (
-			  <li className="list-group-item"> 
-			  <p>Order Id: {orders._id}</p>
-			  <p>Order Date: {orders.date}</p>
-			  <p>Service: {orders.service}</p>
-			</li>
-		  ))}
-        </li>
-      	))}
-		</>
-	);
-
+      {orders.map((order) => (
+        <div className="list-group-item">
+          <div className="list-group-item">
+            <p>Order Id: {order._id}</p>
+            <p>Order Date: {order.date}</p>
+            <div className="list-grou">
+              {order.service.map((s, i) => (
+                <div className="list-group-item">
+                  <Service key={i + "-s"} service={s} checkout={true} />
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* {order.orderdetails.map((orders) => (
+              <li className="list-group-item">
+                <p>Order Id: {orders._id}</p>
+                <p>Order Date: {orders.date}</p>
+                <p>Service: {orders.service}</p>
+              </li>
+            ))} */}
+        </div>
+      ))}
+    </>
+  );
 };
 
 export default OrderHistory;

@@ -22,47 +22,45 @@ module.exports = {
   //   }
   // },
   //Abby's Query
-//   findOrders: async function (req, res) {
-//     try {
-//       const orders = await db.Checkout.find({ User: req.user._id }).populate(
-//         "service"
-//       );
-//       res.json(orders);
-//     } catch (error) {
-//       res.sendStatus(500);
-//     }
-//   },
-// };
+  findOrders: async function (req, res) {
+    try {
+      const orders = await db.Checkout.find({ User: req.user._id }).populate(
+        "service"
+      );
+      res.json(orders);
+    } catch (error) {
+      res.sendStatus(500);
+    }
+  },
+  // };
 
-//Neena's Update Query
-findOrders: async (req, res) => {
-  try {
-    await db.User.aggregate([
-      { $lookup:
-        {
-          from: 'checkouts',
-          localField: '_id',
-          foreignField: 'User',
-          as: 'orderdetails'
-        }
-      },
-      { $lookup:
-        {
-          from: 'services',
-          localField: 'services',
-          foreignField: '_id',
-          as: 'servicedetails'
-        }
-      }
-      ])
-    .then(dbModel => res.json(dbModel))
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(500);
+  //Neena's Update Query
+  // findOrders: async (req, res) => {
+  //   try {
+  //     await db.User.aggregate([
+  //       {
+  //         $lookup: {
+  //           from: "checkouts",
+  //           localField: "_id",
+  //           foreignField: "User",
+  //           as: "orderdetails",
+  //         },
+  //       },
+  //       {
+  //         $lookup: {
+  //           from: "services",
+  //           localField: "services",
+  //           foreignField: "_id",
+  //           as: "servicedetails",
+  //         },
+  //       },
+  //     ]).then((dbModel) => res.json(dbModel));
+  //   } catch (error) {
+  //     console.log(error);
+  //     res.sendStatus(500);
+  //   }
+  // },
 };
-}
-}
-
 
 // // Route for retrieving a Product by id and populating it's Review.
 // app.get("/products/:id", function(req, res) {
