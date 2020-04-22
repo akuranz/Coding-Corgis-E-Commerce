@@ -50,7 +50,6 @@ const OrderHistory = () => {
       {orders.map((order) => (
         <div className="list-group-item">
           <div className="list-group-item">
-            <p>Order Id: {order._id}</p>
             <p>Order Date: {order.date}</p>
             <div className="list-grou">
               {order.service.map((s, i) => (
