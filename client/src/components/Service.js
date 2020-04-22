@@ -9,7 +9,7 @@ const Service = ({ service, checkout, selected, handleCart }) => {
 
   const revNum = service.reviews[0].review;
   return (
-    <Col span={8}>
+    <Col xs={24} sm={20} md={16} lg={12} xl={8}>
       <Card bordered={false} style={{ marginBottom: 15 }}>
         <ul>
           <li>
