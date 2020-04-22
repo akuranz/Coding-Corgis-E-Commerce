@@ -6,7 +6,7 @@ import { Card, Col, Button, Rate } from "antd";
 const Order = ({ order, language, price, coder }) => {
 	// console.log("service components", service);
 	// console.log("rate info!!!", service.reviews);
-	console.log("order props", order)
+	// console.log("order props", order)
 	
 	// const revNum = service.reviews[0].review
 	return (

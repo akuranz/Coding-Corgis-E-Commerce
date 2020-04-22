@@ -27,7 +27,7 @@ const tailLayout = {
 
 function AddAddress(props) {
 	const { type } = props.location.state;
-	console.log(type);
+	// console.log(type);
 	const [global, dispatch] = useGlobalState();
 	const [state, setState] = useState({
 		street: "",
@@ -48,7 +48,7 @@ function AddAddress(props) {
 		try {
 			const URL = `/api/address/${global.user._id}/${type}`;
 			const response = await axios.post(URL, state);
-			console.log(response);
+			// console.log(response);
 			dispatch({
 				type: "LOGIN_USER",
 				payload: response.data

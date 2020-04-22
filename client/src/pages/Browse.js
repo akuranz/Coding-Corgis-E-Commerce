@@ -36,7 +36,7 @@ const Browse = () => {
 	// 	globalSearch();
 	// 	checkFiltered = true;
 	// };
-	console.log("state", state);
+	// console.log("state", state);
 
 	useEffect(() => {
 		function loadServices() {

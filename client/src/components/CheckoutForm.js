@@ -29,9 +29,9 @@ const CheckoutForm = () => {
 		billingAddress: global.user.billingAddress[0] || { _id: "" }
 	});
 	const [loading, setLoading] = useState(false);
-	console.log("GLobal Billing Address", global.user.billingAddress);
+	// console.log("GLobal Billing Address", global.user.billingAddress);
 
-	console.log(global);
+	// console.log(global);
 
 	const enterLoading = () => {
 		setLoading(true);
@@ -42,7 +42,7 @@ const CheckoutForm = () => {
 
 	const removeService = service => {
 		toast("Removed from Cart", { type: "error", autoClose: 2000 });
-		console.log("REMOVE", service);
+		// console.log("REMOVE", service);
 		dispatch({
 			type: "CART_REMOVE_SERVICE_BY_ID",
 			payload: service._id
@@ -63,21 +63,13 @@ const CheckoutForm = () => {
 				...state,
 				purchased_service_ids: global.serviceIds()
 			});
-			console.log("info to db", response);
+			// console.log("info to db", response);
 
 			toast(
 				`Purchase Complete! A confirmation email has been sent to ${global.user.email}`,
 				{ type: "success", autoClose: 8000 }
 			);
 			setLoading(false);
-			// const message = await axios.post("/send", {
-			//   ...state,
-			//   firstName: global.user.firstName,
-			//   lastName: global.user.lastName,
-			//   email: global.user.email,
-			//   // message: message,
-			// });
-			// console.log("info to customer", message);
 		} catch (error) {
 			console.warn(error);
 		}
@@ -199,9 +191,6 @@ const CheckoutForm = () => {
 						SUBMIT ORDER
 					</Button>
 				</Col>
-				{/* <Col span={8}>
-					
-				</Col> */}
 			</Row>
 		</>
 	);

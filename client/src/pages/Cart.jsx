@@ -12,11 +12,11 @@ toast.configure();
 
 const Cart = () => {
 	const [state, dispatch] = useGlobalState();
-	console.log("This is the state inside cart.js", state);
+	// console.log("This is the state inside cart.js", state);
 
 	const removeService = service => {
 		toast("Removed from Cart", { type: "error", autoClose: 2000 });
-		console.log("REMOVE", service);
+		// console.log("REMOVE", service);
 		dispatch({
 			type: "CART_REMOVE_SERVICE_BY_ID",
 			payload: service._id
@@ -26,16 +26,16 @@ const Cart = () => {
 	const orderServices = () => {
 		const serviceIDs = state.cart.map(s => s._id);
 
-		console.log(serviceIDs);
+		// console.log(serviceIDs);
 	};
 
 	// get sum of msgCount prop across all objects in array
 	const priceTotal = state.cart.reduce(function(prev, cur) {
 		return prev + cur.price;
 	}, 0);
-	console.log("Total Price:", priceTotal);
+	// console.log("Total Price:", priceTotal);
 
-	console.log("state.cart", state.cart);
+	// console.log("state.cart", state.cart);
 
 	// const priceTwo
 	return (

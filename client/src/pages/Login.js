@@ -36,7 +36,7 @@ const Login = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("handleSubmit");
+    // console.log("handleSubmit");
 
     axios
       .post("/auth/login", {
@@ -45,7 +45,7 @@ const Login = (props) => {
         password: state.password,
       })
       .then((response) => {
-        console.log("login response:", response);
+        // console.log("login response:", response);
         dispatch({
           type: "LOGIN_USER",
           payload: response.data,
@@ -66,7 +66,7 @@ const Login = (props) => {
         // }
       })
       .catch((error) => {
-        console.log("login error: ");
+        // console.log("login error: ");
         console.log(error);
       });
   };

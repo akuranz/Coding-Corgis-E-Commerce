@@ -42,8 +42,8 @@ const Signup = () => {
   });
 
   const handleChange = (event) => {
-    console.log("event.target.name", event.target.name);
-    console.log("event.target.value", event.target.value);
+    // console.log("event.target.name", event.target.name);
+    // console.log("event.target.value", event.target.value);
     setState({
       ...state,
       [event.target.name]: event.target.value,
@@ -51,8 +51,8 @@ const Signup = () => {
   };
 
   const handleSubmit = (event) => {
-    console.log("sign-up handleSubmit, username: ");
-    console.log(state.username);
+    // console.log("sign-up handleSubmit, username: ");
+    // console.log(state.username);
     event.preventDefault();
 
     //request to server to add a new username/password
@@ -63,9 +63,9 @@ const Signup = () => {
         password: state.password,
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (!response.data.errmsg) {
-          console.log("successful signup");
+          // console.log("successful signup");
           setState({
             ...state,
             redirectTo: "/Login",
@@ -75,7 +75,7 @@ const Signup = () => {
         }
       })
       .catch((error) => {
-        console.log("signup error: ");
+        // console.log("signup error: ");
         console.log(error);
       });
   };

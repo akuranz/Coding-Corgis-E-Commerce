@@ -20,7 +20,7 @@ const BrowseMySQL = () => {
 		function loadServices() {
 			API.getServices()
 				.then(res => {
-					console.log("res", res);
+					// console.log("res", res);
 					setServices(res.data);
 				})
 				.catch(err => console.log(err));
@@ -42,7 +42,7 @@ const BrowseMySQL = () => {
 		});
 	};
 
-	console.log("services", services);
+	// console.log("services", services);
 
 	return (
 		<>

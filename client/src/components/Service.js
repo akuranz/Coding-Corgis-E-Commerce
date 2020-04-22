@@ -4,8 +4,8 @@ import "antd/dist/antd.css";
 import { Card, Col, Button, Rate } from "antd";
 
 const Service = ({ service, checkout, selected, handleCart }) => {
-  console.log("service components", service);
-  console.log("rate info!!!", service.reviews);
+  // console.log("service components", service);
+  // console.log("rate info!!!", service.reviews);
 
   const revNum = service.reviews[0].review;
   return (
