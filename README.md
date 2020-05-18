@@ -5,6 +5,8 @@
 ## Description 
 Coding Corgi's is an E-Commerce application built by Coding Bootcamp Students. 
 
+![](landingpage-screenshot.png)
+
 Our team was inspired by the idea of this application being similar to Uber for website developers. Providing a platform for professionals to monetize their skills on a contractual basis, and customers the ability to purchase hourly coding services. 
 
 Coding Corgi's has a standard E-Commerce model. The customer can create an account, browse services, add to cart, and checkout. Once a purchase is made, a confirmation email with purchase details is sent. The customer can view their purchase history when logged in. Although we still have future developments that must be implemented to have the site functioning in a real-world scenario, this application demonstrates my team's ability to build complex applications that utilize front and back end logic.
